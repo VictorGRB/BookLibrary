@@ -8,12 +8,12 @@ namespace BookLibrary.Repository
 {
     public class BooksCategoryRepository
     {
-        private Models.DBObjects.BooksLibraryDataContext booksLibraryDataContext;
+        private Models.DBObjects.BookLibraryModelsDataContext booksLibraryDataContext;
         public BooksCategoryRepository()
         {
-            this.booksLibraryDataContext = new Models.DBObjects.BooksLibraryDataContext();
+            this.booksLibraryDataContext = new Models.DBObjects.BookLibraryModelsDataContext();
         }
-        public BooksCategoryRepository(Models.DBObjects.BooksLibraryDataContext booksLibraryDataContext)
+        public BooksCategoryRepository(Models.DBObjects.BookLibraryModelsDataContext booksLibraryDataContext)
         {
             this.booksLibraryDataContext = booksLibraryDataContext;
         }

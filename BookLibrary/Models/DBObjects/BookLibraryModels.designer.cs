@@ -23,7 +23,7 @@ namespace BookLibrary.Models.DBObjects
 	
 	
 	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="Books")]
-	public partial class BooksLibraryDataContext : System.Data.Linq.DataContext
+	public partial class BookLibraryModelsDataContext : System.Data.Linq.DataContext
 	{
 		
 		private static System.Data.Linq.Mapping.MappingSource mappingSource = new AttributeMappingSource();
@@ -47,31 +47,31 @@ namespace BookLibrary.Models.DBObjects
     partial void DeleteLocationInLibrary(LocationInLibrary instance);
     #endregion
 		
-		public BooksLibraryDataContext() : 
+		public BookLibraryModelsDataContext() : 
 				base(global::System.Configuration.ConfigurationManager.ConnectionStrings["BooksConnectionString"].ConnectionString, mappingSource)
 		{
 			OnCreated();
 		}
 		
-		public BooksLibraryDataContext(string connection) : 
+		public BookLibraryModelsDataContext(string connection) : 
 				base(connection, mappingSource)
 		{
 			OnCreated();
 		}
 		
-		public BooksLibraryDataContext(System.Data.IDbConnection connection) : 
+		public BookLibraryModelsDataContext(System.Data.IDbConnection connection) : 
 				base(connection, mappingSource)
 		{
 			OnCreated();
 		}
 		
-		public BooksLibraryDataContext(string connection, System.Data.Linq.Mapping.MappingSource mappingSource) : 
+		public BookLibraryModelsDataContext(string connection, System.Data.Linq.Mapping.MappingSource mappingSource) : 
 				base(connection, mappingSource)
 		{
 			OnCreated();
 		}
 		
-		public BooksLibraryDataContext(System.Data.IDbConnection connection, System.Data.Linq.Mapping.MappingSource mappingSource) : 
+		public BookLibraryModelsDataContext(System.Data.IDbConnection connection, System.Data.Linq.Mapping.MappingSource mappingSource) : 
 				base(connection, mappingSource)
 		{
 			OnCreated();
@@ -1126,6 +1126,8 @@ namespace BookLibrary.Models.DBObjects
 		
 		private System.Guid _IDLocationInLibrary;
 		
+		private string _Name;
+		
 		private decimal _Floor;
 		
 		private decimal _Sector;
@@ -1140,6 +1142,8 @@ namespace BookLibrary.Models.DBObjects
     partial void OnCreated();
     partial void OnIDLocationInLibraryChanging(System.Guid value);
     partial void OnIDLocationInLibraryChanged();
+    partial void OnNameChanging(string value);
+    partial void OnNameChanged();
     partial void OnFloorChanging(decimal value);
     partial void OnFloorChanged();
     partial void OnSectorChanging(decimal value);
@@ -1170,6 +1174,26 @@ namespace BookLibrary.Models.DBObjects
 					this._IDLocationInLibrary = value;
 					this.SendPropertyChanged("IDLocationInLibrary");
 					this.OnIDLocationInLibraryChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="VarChar(20) NOT NULL", CanBeNull=false)]
+		public string Name
+		{
+			get
+			{
+				return this._Name;
+			}
+			set
+			{
+				if ((this._Name != value))
+				{
+					this.OnNameChanging(value);
+					this.SendPropertyChanging();
+					this._Name = value;
+					this.SendPropertyChanged("Name");
+					this.OnNameChanged();
 				}
 			}
 		}

@@ -193,10 +193,10 @@
     <Compile Include="Models\BooksCategoryModel.cs" />
     <Compile Include="Models\BorrowFormModel.cs" />
     <Compile Include="Models\CustomerModel.cs" />
-    <Compile Include="Models\DBObjects\BooksLibraryModels.designer.cs">
+    <Compile Include="Models\DBObjects\BookLibraryModels.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>BooksLibraryModels.dbml</DependentUpon>
+      <DependentUpon>BookLibraryModels.dbml</DependentUpon>
     </Compile>
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\LocationInLibraryModel.cs" />
@@ -220,13 +220,13 @@
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="Models\DBObjects\BooksLibraryModels.dbml">
+    <Content Include="Models\DBObjects\BookLibraryModels.dbml">
       <Generator>MSLinqToSQLGenerator</Generator>
-      <LastGenOutput>BooksLibraryModels.designer.cs</LastGenOutput>
+      <LastGenOutput>BookLibraryModels.designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </Content>
-    <None Include="Models\DBObjects\BooksLibraryModels.dbml.layout">
-      <DependentUpon>BooksLibraryModels.dbml</DependentUpon>
+    <None Include="Models\DBObjects\BookLibraryModels.dbml.layout">
+      <DependentUpon>BookLibraryModels.dbml</DependentUpon>
     </None>
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
