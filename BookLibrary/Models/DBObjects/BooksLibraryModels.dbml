@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Books" Class="BooksLibraryDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\Books.mdf;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="BooksConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Books" Member="Books">
+    <Type Name="Book">
+      <Column Name="IDBook" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Author" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Publisher" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="NumberOfCopies" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
+      <Column Name="IDBooksCategory" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="IDLocationInLibrary" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Association Name="Book_BorrowForm" Member="BorrowForms" ThisKey="IDBook" OtherKey="IDBook" Type="BorrowForm" />
+      <Association Name="BooksCategory_Book" Member="BooksCategory" ThisKey="IDBooksCategory" OtherKey="IDBooksCategory" Type="BooksCategory" IsForeignKey="true" />
+      <Association Name="LocationInLibrary_Book" Member="LocationInLibrary" ThisKey="IDLocationInLibrary" OtherKey="IDLocationInLibrary" Type="LocationInLibrary" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.BooksCategory" Member="BooksCategories">
+    <Type Name="BooksCategory">
+      <Column Name="IDBooksCategory" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Genre" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="ChildAppropriate" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="BooksCategory_Book" Member="Books" ThisKey="IDBooksCategory" OtherKey="IDBooksCategory" Type="Book" />
+    </Type>
+  </Table>
+  <Table Name="dbo.BorrowForm" Member="BorrowForms">
+    <Type Name="BorrowForm">
+      <Column Name="IDBorrowForm" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="IDBook" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="IDCustomer" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="BorrowedFrom" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="BorrowedUntil" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="ReturnedOnTime" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="ProperConditionsReturn" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="Book_BorrowForm" Member="Book" ThisKey="IDBook" OtherKey="IDBook" Type="Book" IsForeignKey="true" />
+      <Association Name="Customer_BorrowForm" Member="Customer" ThisKey="IDCustomer" OtherKey="IDCustomer" Type="Customer" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Customer" Member="Customers">
+    <Type Name="Customer">
+      <Column Name="IDCustomer" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="EmailAddress" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Address" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="PhoneNumber" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="CustomerSince" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="BooksReturnedOnTime" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
+      <Column Name="MonthlyFeePayed" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="Customer_BorrowForm" Member="BorrowForms" ThisKey="IDCustomer" OtherKey="IDCustomer" Type="BorrowForm" />
+    </Type>
+  </Table>
+  <Table Name="dbo.LocationInLibrary" Member="LocationInLibraries">
+    <Type Name="LocationInLibrary">
+      <Column Name="IDLocationInLibrary" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Floor" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
+      <Column Name="Sector" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
+      <Column Name="Shelf" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
+      <Association Name="LocationInLibrary_Book" Member="Books" ThisKey="IDLocationInLibrary" OtherKey="IDLocationInLibrary" Type="Book" />
+    </Type>
+  </Table>
+</Database>
