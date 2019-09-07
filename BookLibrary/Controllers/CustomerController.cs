@@ -17,9 +17,10 @@ namespace BookLibrary.Controllers
         }
 
         // GET: Customer/Details/5
-        public ActionResult Details(int id)
+        public ActionResult Details(Guid id)
         {
-            return View();
+            Models.CustomerModel customerModel = customerRepository.GetCustomerByID(id);
+            return View("CustomerDetails",customerModel);
         }
 
         // GET: Customer/Create
@@ -47,46 +48,50 @@ namespace BookLibrary.Controllers
         }
 
         // GET: Customer/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult Edit(Guid id)
         {
-            return View();
+            Models.CustomerModel customerModel = customerRepository.GetCustomerByID(id);
+            return View("EditCustomer",customerModel);
         }
 
         // POST: Customer/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(Guid id, FormCollection collection)
         {
             try
             {
                 // TODO: Add update logic here
-
+                Models.CustomerModel customerModel = new Models.CustomerModel();
+                UpdateModel(customerModel);
+                customerRepository.UpdateCustomer(customerModel);
                 return RedirectToAction("Index");
             }
             catch
             {
-                return View();
+                return View("EditCustomer");
             }
         }
 
         // GET: Customer/Delete/5
-        public ActionResult Delete(int id)
+        public ActionResult Delete(Guid id)
         {
-            return View();
+            Models.CustomerModel customerModel = customerRepository.GetCustomerByID(id);
+            return View("DeleteCustomer",customerModel);
         }
 
         // POST: Customer/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult Delete(Guid id, FormCollection collection)
         {
             try
             {
                 // TODO: Add delete logic here
-
+                customerRepository.DeleteCustomer(id);
                 return RedirectToAction("Index");
             }
             catch
             {
-                return View();
+                return View("DeleteCustomer");
             }
         }
     }
