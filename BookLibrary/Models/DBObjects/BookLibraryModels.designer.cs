@@ -1128,9 +1128,9 @@ namespace BookLibrary.Models.DBObjects
 		
 		private string _Name;
 		
-		private decimal _Floor;
+		private int _Floor;
 		
-		private decimal _Sector;
+		private int _Sector;
 		
 		private string _Shelf;
 		
@@ -1199,7 +1199,7 @@ namespace BookLibrary.Models.DBObjects
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Floor", DbType="Decimal(18,0) NOT NULL")]
-		public decimal Floor
+		public int Floor
 		{
 			get
 			{
@@ -1219,7 +1219,7 @@ namespace BookLibrary.Models.DBObjects
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Sector", DbType="Decimal(18,0) NOT NULL")]
-		public decimal Sector
+		public int Sector
 		{
 			get
 			{

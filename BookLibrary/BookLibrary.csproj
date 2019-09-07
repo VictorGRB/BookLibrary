@@ -203,6 +203,7 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\BooksCategoryRepository.cs" />
+    <Compile Include="Repository\LocationInLibraryRepository.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -276,6 +277,8 @@
     <Content Include="Views\BooksCategory\CreateBooksCategory.cshtml" />
     <Content Include="Views\BooksCategory\Index.cshtml" />
     <Content Include="Views\BooksCategory\EditBooksCategory.cshtml" />
+    <Content Include="Views\BooksCategory\DeleteBooksCategory.cshtml" />
+    <Content Include="Views\BooksCategory\BooksCategoryDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />

@@ -17,9 +17,10 @@ namespace BookLibrary.Controllers
         }
 
         // GET: BooksCategory/Details/5
-        public ActionResult Details(int id)
+        public ActionResult Details(Guid id)
         {
-            return View();
+            Models.BooksCategoryModel booksCategoryModel = booksCategoryRepository.GetBookCategoryByID(id);
+            return View("BooksCategoryDetails",booksCategoryModel);
         }
 
         // GET: BooksCategory/Create
@@ -75,7 +76,8 @@ namespace BookLibrary.Controllers
         // GET: BooksCategory/Delete/5
         public ActionResult Delete(Guid id)
         {
-            return View();
+            Models.BooksCategoryModel booksCategoryModel = booksCategoryRepository.GetBookCategoryByID(id);
+            return View("DeleteBooksCategory",booksCategoryModel);
         }
 
         // POST: BooksCategory/Delete/5
@@ -85,12 +87,12 @@ namespace BookLibrary.Controllers
             try
             {
                 // TODO: Add delete logic here
-
+                booksCategoryRepository.DeleteBookCategory(id);
                 return RedirectToAction("Index");
             }
             catch
             {
-                return View();
+                return View("DeleteBooksCategory");
             }
         }
     }
