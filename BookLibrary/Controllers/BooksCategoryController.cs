@@ -12,7 +12,8 @@ namespace BookLibrary.Controllers
         // GET: BooksCategory
         public ActionResult Index()
         {
-            return View();
+            List<Models.BooksCategoryModel> booksCategories = booksCategoryRepository.GetAllBookCategories();
+            return View("Index",booksCategories);
         }
 
         // GET: BooksCategory/Details/5
@@ -47,36 +48,39 @@ namespace BookLibrary.Controllers
         }
 
         // GET: BooksCategory/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult Edit(Guid id)
         {
-            return View();
+            Models.BooksCategoryModel booksCategoryModel = booksCategoryRepository.GetBookCategoryByID(id);
+            return View("EditBooksCategory",booksCategoryModel);
         }
 
         // POST: BooksCategory/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(Guid id, FormCollection collection)
         {
             try
             {
                 // TODO: Add update logic here
-
+                Models.BooksCategoryModel booksCategoryModel = new Models.BooksCategoryModel();
+                UpdateModel(booksCategoryModel);
+                booksCategoryRepository.UpdateBookCategory(booksCategoryModel);
                 return RedirectToAction("Index");
             }
             catch
             {
-                return View();
+                return View("EditBooksCategory");
             }
         }
 
         // GET: BooksCategory/Delete/5
-        public ActionResult Delete(int id)
+        public ActionResult Delete(Guid id)
         {
             return View();
         }
 
         // POST: BooksCategory/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult Delete(Guid id, FormCollection collection)
         {
             try
             {
