@@ -65,7 +65,7 @@ namespace BookLibrary.Repository
                 locationInLibraryModel.IDLocationInLibrary = dbLocationInLibrary.IDLocationInLibrary;
                 locationInLibraryModel.Floor = dbLocationInLibrary.Floor;
                 locationInLibraryModel.Sector = dbLocationInLibrary.Sector;
-                locationInLibraryModel.Shelf = locationInLibraryModel.Shelf;
+                locationInLibraryModel.Shelf = dbLocationInLibrary.Shelf;
 
                 return locationInLibraryModel;
             }
@@ -74,7 +74,7 @@ namespace BookLibrary.Repository
         private Models.DBObjects.LocationInLibrary MapModelToDbObject(LocationInLibraryModel locationInLibraryModel)
         {
             Models.DBObjects.LocationInLibrary dbLocationInLibraryModel = new Models.DBObjects.LocationInLibrary();
-            if (dbLocationInLibraryModel != null)
+            if (locationInLibraryModel != null)
             {
                 dbLocationInLibraryModel.IDLocationInLibrary = locationInLibraryModel.IDLocationInLibrary;
                 dbLocationInLibraryModel.Floor = locationInLibraryModel.Floor;
