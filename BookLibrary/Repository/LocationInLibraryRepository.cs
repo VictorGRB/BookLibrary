@@ -6,14 +6,14 @@ using System.Web;
 
 namespace BookLibrary.Repository
 {
-    public class LocationInLibrary
+    public class LocationInLibraryRepository
     {
         private Models.DBObjects.BookLibraryModelsDataContext booksLibraryDataContext;
-        public LocationInLibrary()
+        public LocationInLibraryRepository()
         {
             this.booksLibraryDataContext = new Models.DBObjects.BookLibraryModelsDataContext();
         }
-        public LocationInLibrary(Models.DBObjects.BookLibraryModelsDataContext booksLibraryDataContext)
+        public LocationInLibraryRepository(Models.DBObjects.BookLibraryModelsDataContext booksLibraryDataContext)
         {
             this.booksLibraryDataContext = booksLibraryDataContext;
         }

@@ -184,6 +184,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BooksCategoryController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LocationInLibraryController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -279,6 +280,8 @@
     <Content Include="Views\BooksCategory\EditBooksCategory.cshtml" />
     <Content Include="Views\BooksCategory\DeleteBooksCategory.cshtml" />
     <Content Include="Views\BooksCategory\BooksCategoryDetails.cshtml" />
+    <Content Include="Views\LocationInLibrary\CreateLocationInLibrary.cshtml" />
+    <Content Include="Views\LocationInLibrary\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
