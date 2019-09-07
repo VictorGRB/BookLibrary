@@ -47,6 +47,15 @@ namespace BookLibrary.Repository
                 booksLibraryDataContext.SubmitChanges();
             }
         }
+        public void DeleteBookCategory(Guid ID)
+        {
+            Models.DBObjects.BooksCategory booksCategoryToDelete = booksLibraryDataContext.BooksCategories.FirstOrDefault(x => x.IDBooksCategory == ID);
+            if (booksCategoryToDelete != null)
+            {
+                booksLibraryDataContext.BooksCategories.DeleteOnSubmit(booksCategoryToDelete);
+                booksLibraryDataContext.SubmitChanges();
+            }
+        }
         private BooksCategoryModel MapDbObjectToModel(Models.DBObjects.BooksCategory dbbookCategory)
         {
             BooksCategoryModel booksCategoryModel = new BooksCategoryModel();
