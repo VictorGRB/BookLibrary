@@ -34,7 +34,7 @@ namespace BookLibrary.Controllers
             try
             {
                 // TODO: Add insert logic here
-                Models.LocationInLibraryModel locationInLibraryModel= new Models.LocationInLibraryModel();
+                Models.LocationInLibraryModel locationInLibraryModel = new Models.LocationInLibraryModel();
                 UpdateModel(locationInLibraryModel);
                 locationInLibraryRepository.InsertLocationInLibrary(locationInLibraryModel);
                 return RedirectToAction("Index");
