@@ -878,7 +878,7 @@ namespace BookLibrary.Models.DBObjects
 		
 		private System.DateTime _CustomerSince;
 		
-		private decimal _BooksReturnedOnTime;
+		private int _BooksReturnedOnTime;
 		
 		private bool _MonthlyFeePayed;
 		
@@ -1033,7 +1033,7 @@ namespace BookLibrary.Models.DBObjects
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BooksReturnedOnTime", DbType="Decimal(18,0) NOT NULL")]
-		public decimal BooksReturnedOnTime
+		public int BooksReturnedOnTime
 		{
 			get
 			{
