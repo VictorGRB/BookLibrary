@@ -48,7 +48,7 @@ namespace BookLibrary.Repository
                 booksLibraryDataContext.SubmitChanges();
             }
         }
-        public void DeleteBookCategory(Guid ID)
+        public void DeleteLocationInLibrary(Guid ID)
         {
             Models.DBObjects.LocationInLibrary locationInLibraryToDelete = booksLibraryDataContext.LocationInLibraries.FirstOrDefault(x => x.IDLocationInLibrary == ID);
             if (locationInLibraryToDelete != null)

@@ -282,6 +282,9 @@
     <Content Include="Views\BooksCategory\BooksCategoryDetails.cshtml" />
     <Content Include="Views\LocationInLibrary\CreateLocationInLibrary.cshtml" />
     <Content Include="Views\LocationInLibrary\Index.cshtml" />
+    <Content Include="Views\LocationInLibrary\EditLocationInLibrary.cshtml" />
+    <Content Include="Views\LocationInLibrary\DeleteLocationInLibrary.cshtml" />
+    <Content Include="Views\LocationInLibrary\LocationInLibraryDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />

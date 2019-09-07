@@ -12,13 +12,15 @@ namespace BookLibrary.Controllers
         // GET: LocationInLibrary
         public ActionResult Index()
         {
-            return View();
+            List<Models.LocationInLibraryModel> locationsInLibrary = locationInLibraryRepository.GetAllLocationsInLibrary();
+            return View("Index",locationsInLibrary);
         }
 
         // GET: LocationInLibrary/Details/5
-        public ActionResult Details(int id)
+        public ActionResult Details(Guid id)
         {
-            return View();
+            Models.LocationInLibraryModel locationInLibraryModel = locationInLibraryRepository.GetLocationInLibraryByID(id);
+            return View("LocationInLibraryDetails",locationInLibraryModel);
         }
 
         // GET: LocationInLibrary/Create
@@ -46,46 +48,50 @@ namespace BookLibrary.Controllers
         }
 
         // GET: LocationInLibrary/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult Edit(Guid id)
         {
-            return View();
+            Models.LocationInLibraryModel locationInLibraryModel = locationInLibraryRepository.GetLocationInLibraryByID(id);
+            return View("EditLocationInLibrary",locationInLibraryModel);
         }
 
         // POST: LocationInLibrary/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(Guid id, FormCollection collection)
         {
             try
             {
                 // TODO: Add update logic here
-
+                Models.LocationInLibraryModel locationInLibraryModel = new Models.LocationInLibraryModel();
+                UpdateModel(locationInLibraryModel);
+                locationInLibraryRepository.UpdateLocationInLibrary(locationInLibraryModel);
                 return RedirectToAction("Index");
             }
             catch
             {
-                return View();
+                return View("EditLocationInLibrary");
             }
         }
 
         // GET: LocationInLibrary/Delete/5
-        public ActionResult Delete(int id)
+        public ActionResult Delete(Guid id)
         {
-            return View();
+            Models.LocationInLibraryModel locationInLibraryModel = locationInLibraryRepository.GetLocationInLibraryByID(id);
+            return View("DeleteLocationInLibrary",locationInLibraryModel);
         }
 
         // POST: LocationInLibrary/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult Delete(Guid id, FormCollection collection)
         {
             try
             {
                 // TODO: Add delete logic here
-
+                locationInLibraryRepository.DeleteLocationInLibrary(id);
                 return RedirectToAction("Index");
             }
             catch
             {
-                return View();
+                return View("DeleteLocationInLibrary");
             }
         }
     }
