@@ -12,9 +12,9 @@ namespace BookLibrary.Models
         [Required(ErrorMessage ="Mandatory Field")]
         public string Name { get; set; }
         [Required(ErrorMessage = "Mandatory Field")]
-        public decimal Floor { get; set; }
+        public int Floor { get; set; }
         [Required(ErrorMessage = "Mandatory Field")]
-        public decimal Sector { get; set; }
+        public int Sector { get; set; }
         [Required(ErrorMessage = "Mandatory Field")]
         public string Shelf { get; set; }
     }

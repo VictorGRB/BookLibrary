@@ -1128,9 +1128,9 @@ namespace BookLibrary.Models.DBObjects
 		
 		private string _Name;
 		
-		private decimal _Floor;
+		private int _Floor;
 		
-		private decimal _Sector;
+		private int _Sector;
 		
 		private string _Shelf;
 		
@@ -1144,9 +1144,9 @@ namespace BookLibrary.Models.DBObjects
     partial void OnIDLocationInLibraryChanged();
     partial void OnNameChanging(string value);
     partial void OnNameChanged();
-    partial void OnFloorChanging(decimal value);
+    partial void OnFloorChanging(int value);
     partial void OnFloorChanged();
-    partial void OnSectorChanging(decimal value);
+    partial void OnSectorChanging(int value);
     partial void OnSectorChanged();
     partial void OnShelfChanging(string value);
     partial void OnShelfChanged();
@@ -1198,8 +1198,8 @@ namespace BookLibrary.Models.DBObjects
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Floor", DbType="Decimal(18,0) NOT NULL")]
-		public decimal Floor
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Floor", DbType="Int NOT NULL")]
+		public int Floor
 		{
 			get
 			{
@@ -1218,8 +1218,8 @@ namespace BookLibrary.Models.DBObjects
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Sector", DbType="Decimal(18,0) NOT NULL")]
-		public decimal Sector
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Sector", DbType="Int NOT NULL")]
+		public int Sector
 		{
 			get
 			{
