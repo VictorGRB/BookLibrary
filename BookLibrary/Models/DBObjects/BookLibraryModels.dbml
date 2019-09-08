@@ -52,8 +52,8 @@
     <Type Name="LocationInLibrary">
       <Column Name="IDLocationInLibrary" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="Name" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
-      <Column Name="Floor" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Sector" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Floor" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Sector" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="Shelf" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
       <Association Name="LocationInLibrary_Book" Member="Books" ThisKey="IDLocationInLibrary" OtherKey="IDLocationInLibrary" Type="Book" />
     </Type>

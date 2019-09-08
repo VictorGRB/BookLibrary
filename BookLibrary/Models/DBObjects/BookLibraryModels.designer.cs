@@ -1128,9 +1128,9 @@ namespace BookLibrary.Models.DBObjects
 		
 		private string _Name;
 		
-		private int _Floor;
+		private System.Nullable<int> _Floor;
 		
-		private int _Sector;
+		private System.Nullable<int> _Sector;
 		
 		private string _Shelf;
 		
@@ -1144,9 +1144,9 @@ namespace BookLibrary.Models.DBObjects
     partial void OnIDLocationInLibraryChanged();
     partial void OnNameChanging(string value);
     partial void OnNameChanged();
-    partial void OnFloorChanging(int value);
+    partial void OnFloorChanging(System.Nullable<int> value);
     partial void OnFloorChanged();
-    partial void OnSectorChanging(int value);
+    partial void OnSectorChanging(System.Nullable<int> value);
     partial void OnSectorChanged();
     partial void OnShelfChanging(string value);
     partial void OnShelfChanged();
@@ -1198,8 +1198,8 @@ namespace BookLibrary.Models.DBObjects
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Floor", DbType="Int NOT NULL")]
-		public int Floor
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Floor", DbType="Int")]
+		public System.Nullable<int> Floor
 		{
 			get
 			{
@@ -1218,8 +1218,8 @@ namespace BookLibrary.Models.DBObjects
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Sector", DbType="Int NOT NULL")]
-		public int Sector
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Sector", DbType="Int")]
+		public System.Nullable<int> Sector
 		{
 			get
 			{
