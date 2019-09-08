@@ -42,6 +42,7 @@ namespace BookLibrary.Repository
             if (existingLocationInLibrary != null)
             {
                 existingLocationInLibrary.IDLocationInLibrary = locationInLibraryModel.IDLocationInLibrary;
+                existingLocationInLibrary.Name = locationInLibraryModel.Name;
                 existingLocationInLibrary.Floor = locationInLibraryModel.Floor;
                 existingLocationInLibrary.Sector = locationInLibraryModel.Sector;
                 existingLocationInLibrary.Shelf = locationInLibraryModel.Shelf;
@@ -63,6 +64,7 @@ namespace BookLibrary.Repository
             if (dbLocationInLibrary != null)
             {
                 locationInLibraryModel.IDLocationInLibrary = dbLocationInLibrary.IDLocationInLibrary;
+                locationInLibraryModel.Name = dbLocationInLibrary.Name;
                 locationInLibraryModel.Floor = dbLocationInLibrary.Floor;
                 locationInLibraryModel.Sector = dbLocationInLibrary.Sector;
                 locationInLibraryModel.Shelf = dbLocationInLibrary.Shelf;
@@ -77,6 +79,7 @@ namespace BookLibrary.Repository
             if (locationInLibraryModel != null)
             {
                 dbLocationInLibraryModel.IDLocationInLibrary = locationInLibraryModel.IDLocationInLibrary;
+                dbLocationInLibraryModel.Name = locationInLibraryModel.Name;
                 dbLocationInLibraryModel.Floor = locationInLibraryModel.Floor;
                 dbLocationInLibraryModel.Sector = locationInLibraryModel.Sector;
                 dbLocationInLibraryModel.Shelf = locationInLibraryModel.Shelf;
