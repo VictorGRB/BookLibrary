@@ -1,4 +1,6 @@
-﻿using System;
+﻿using BookLibrary.Models;
+using BookLibrary.Repository;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,6 +10,9 @@ namespace BookLibrary.Controllers
 {
     public class BookController : Controller
     {
+        private BorrowFormRepository borrowFormsRepository = new BorrowFormRepository();
+        private LocationInLibraryRepository locationInLibraryRepository = new LocationInLibraryRepository();
+        private BooksCategoryRepository booksCategoryRepository = new BooksCategoryRepository();
         private Repository.BookRepository bookRepository = new Repository.BookRepository();
         // GET: Book
         public ActionResult Index()
@@ -26,6 +31,14 @@ namespace BookLibrary.Controllers
         // GET: Book/Create
         public ActionResult Create()
         {
+            var bookCategories = booksCategoryRepository.GetAllBookCategories();
+            SelectList lst = new SelectList(bookCategories, "IDBooksCategory", "Genre");
+            ViewData["bookCategory"] = lst;
+
+            var locationsInLibrary = locationInLibraryRepository.GetAllLocationsInLibrary();
+            SelectList locs = new SelectList(locationsInLibrary, "IDLocationInLibrary", "Name");
+            ViewData["locationInLibrary"] = locs;
+
             return View("CreateBook");
         }
 
@@ -85,6 +98,11 @@ namespace BookLibrary.Controllers
         {
             try
             {
+                List<BorrowFormModel> borrowForms = borrowFormsRepository.GetAllBorrowFormsByBookId(id);
+                foreach (BorrowFormModel borrowForm in borrowForms)
+                {
+                    borrowFormsRepository.DeleteBorrowForm(borrowForm.IDBorrowForm);
+                }
                 // TODO: Add delete logic here
                 bookRepository.DeleteBook(id);
                 return RedirectToAction("Index");

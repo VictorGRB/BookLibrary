@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BookLibrary.Repository;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,6 +9,8 @@ namespace BookLibrary.Controllers
 {
     public class BorrowFormController : Controller
     {
+        private BookRepository bookRepository = new BookRepository();
+        private CustomerRepository customerRepository = new CustomerRepository();
         private Repository.BorrowFormRepository borrowFormRepository = new Repository.BorrowFormRepository();
         // GET: BorrowForm
         public ActionResult Index()
@@ -26,6 +29,13 @@ namespace BookLibrary.Controllers
         // GET: BorrowForm/Create
         public ActionResult Create()
         {
+            var books = bookRepository.GetAllBooks();
+            SelectList bks = new SelectList(books, "IDBook", "Name");
+            ViewData["book"] = bks;
+
+            var customers = customerRepository.GetAllCustomers();
+            SelectList cust = new SelectList(customers, "IDCustomer", "Name");
+            ViewData["customer"] = cust;
             return View("CreateBorrowForm");
         }
 

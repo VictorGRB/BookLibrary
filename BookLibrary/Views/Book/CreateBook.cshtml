@@ -53,7 +53,8 @@
         <div class="form-group">
             @Html.LabelFor(model => model.IDBooksCategory, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.IDBooksCategory, new { htmlAttributes = new { @class = "form-control" } })
+                @*@Html.EditorFor(model => model.IDBooksCategory, new { htmlAttributes = new { @class = "form-control" } })*@
+                @Html.DropDownListFor(model=>model.IDBooksCategory,ViewData["bookCategory"] as IEnumerable<SelectListItem>)
                 @Html.ValidationMessageFor(model => model.IDBooksCategory, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -61,7 +62,8 @@
         <div class="form-group">
             @Html.LabelFor(model => model.IDLocationInLibrary, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.IDLocationInLibrary, new { htmlAttributes = new { @class = "form-control" } })
+                @*@Html.EditorFor(model => model.IDLocationInLibrary, new { htmlAttributes = new { @class = "form-control" } })*@
+                @Html.DropDownListFor(model=>model.IDLocationInLibrary,ViewData["locationInLibrary"]as IEnumerable<SelectListItem>)
                 @Html.ValidationMessageFor(model => model.IDLocationInLibrary, "", new { @class = "text-danger" })
             </div>
         </div>

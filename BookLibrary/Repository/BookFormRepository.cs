@@ -1,4 +1,5 @@
 ﻿using BookLibrary.Models;
+using BookLibrary.Models.DBObjects;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,6 +9,7 @@ namespace BookLibrary.Repository
 {
     public class BorrowFormRepository
     {
+        
         private Models.DBObjects.BookLibraryModelsDataContext booksLibraryDataContext;
         public BorrowFormRepository()
         {
@@ -17,6 +19,46 @@ namespace BookLibrary.Repository
         {
             this.booksLibraryDataContext = booksLibraryDataContext;
         }
+        public List<BorrowFormModel> GetAllBorrowFormsByBookId(Guid id)
+        {
+            List<BorrowFormModel> borrowFormList = new List<BorrowFormModel>();
+            List<BorrowForm> borrowForm = booksLibraryDataContext.BorrowForms.Where(x => x.IDBook == id).ToList();
+            foreach (Models.DBObjects.BorrowForm dbBorrowForm in borrowForm)
+            {
+                BorrowFormModel borrowFormModel = new BorrowFormModel();
+                borrowFormModel.IDBorrowForm = dbBorrowForm.IDBorrowForm;
+                borrowFormModel.IDBook = dbBorrowForm.IDBook;
+                borrowFormModel.IDCustomer = dbBorrowForm.IDCustomer;
+                borrowFormModel.BorrowedFrom = dbBorrowForm.BorrowedFrom;
+                borrowFormModel.BorrowedUntil = dbBorrowForm.BorrowedUntil;
+                borrowFormModel.ReturnedOnTime = dbBorrowForm.ReturnedOnTime;
+                borrowFormModel.ProperConditionsReturn = dbBorrowForm.ProperConditionsReturn;
+
+                borrowFormList.Add(borrowFormModel);
+            }
+            return borrowFormList;
+        }
+
+
+        public List<BorrowFormModel> GetAllBorrowFormsByCustomerId(Guid id)
+            {
+                List<BorrowFormModel> borrowFormList = new List<BorrowFormModel>();
+                List<BorrowForm> borrowForm = booksLibraryDataContext.BorrowForms.Where(x => x.IDCustomer == id).ToList();
+                foreach (Models.DBObjects.BorrowForm dbBorrowForm in borrowForm)
+                {
+                    BorrowFormModel borrowFormModel = new BorrowFormModel();
+                    borrowFormModel.IDBorrowForm = dbBorrowForm.IDBorrowForm;
+                    borrowFormModel.IDBook = dbBorrowForm.IDBook;
+                    borrowFormModel.IDCustomer = dbBorrowForm.IDCustomer;
+                    borrowFormModel.BorrowedFrom = dbBorrowForm.BorrowedFrom;
+                    borrowFormModel.BorrowedUntil = dbBorrowForm.BorrowedUntil;
+                    borrowFormModel.ReturnedOnTime = dbBorrowForm.ReturnedOnTime;
+                    borrowFormModel.ProperConditionsReturn = dbBorrowForm.ProperConditionsReturn;
+
+                    borrowFormList.Add(borrowFormModel);
+                }
+                return borrowFormList;
+            }
         public List<BorrowFormModel> GetAllBorrowForms()
         {
             List<BorrowFormModel> borrowFormList = new List<BorrowFormModel>();
