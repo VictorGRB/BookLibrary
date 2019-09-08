@@ -1,4 +1,6 @@
-﻿using System;
+﻿using BookLibrary.Models;
+using BookLibrary.Repository;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -6,8 +8,10 @@ using System.Web.Mvc;
 
 namespace BookLibrary.Controllers
 {
+    
     public class BooksCategoryController : Controller
     {
+        private BookRepository booksRepository = new BookRepository();
         private Repository.BooksCategoryRepository booksCategoryRepository = new Repository.BooksCategoryRepository();
         // GET: BooksCategory
         public ActionResult Index()
@@ -86,6 +90,11 @@ namespace BookLibrary.Controllers
         {
             try
             {
+                List<BookModel> books = booksRepository.GetAllBooksByBooksCategory(id);
+                foreach(BookModel book in books)
+                {
+                    booksRepository.DeleteBook(book.IDBook);
+                }
                 // TODO: Add delete logic here
                 booksCategoryRepository.DeleteBookCategory(id);
                 return RedirectToAction("Index");

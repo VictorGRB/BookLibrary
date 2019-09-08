@@ -22,8 +22,44 @@ namespace BookLibrary.Repository
         public List<BookModel>GetAllBooksByBooksCategory(Guid id)
         {
             List<BookModel> booksList = new List<BookModel>();
+            List<Book> book = booksLibraryDataContext.Books.Where(x => x.IDBooksCategory == id).ToList();
+            foreach(Models.DBObjects.Book dbBook in book)
+            {
+                BookModel bookModel = new BookModel();
+                bookModel.IDBook = dbBook.IDBook;
+                bookModel.Name = dbBook.Name;
+                bookModel.Author = dbBook.Author;
+                bookModel.Publisher = dbBook.Publisher;
+                bookModel.NumberOfCopies = dbBook.NumberOfCopies;
+                bookModel.IDBooksCategory = dbBook.IDBooksCategory;
+                bookModel.IDLocationInLibrary = dbBook.IDLocationInLibrary;
+
+                booksList.Add(bookModel);
+
+            }
+            return booksList;
         }
-        public List<BookModel> GetAllBooks()
+        public List<BookModel> GetAllBooksByLocationInLibrary(Guid id)
+        {
+            List<BookModel> booksList = new List<BookModel>();
+            List<Book> book = booksLibraryDataContext.Books.Where(x => x.IDLocationInLibrary == id).ToList();
+            foreach (Models.DBObjects.Book dbBook in book)
+            {
+                BookModel bookModel = new BookModel();
+                bookModel.IDBook = dbBook.IDBook;
+                bookModel.Name = dbBook.Name;
+                bookModel.Author = dbBook.Author;
+                bookModel.Publisher = dbBook.Publisher;
+                bookModel.NumberOfCopies = dbBook.NumberOfCopies;
+                bookModel.IDBooksCategory = dbBook.IDBooksCategory;
+                bookModel.IDLocationInLibrary = dbBook.IDLocationInLibrary;
+
+                booksList.Add(bookModel);
+
+            }
+            return booksList;
+        }
+            public List<BookModel> GetAllBooks()
         {
             List<BookModel> bookList = new List<BookModel>();
             foreach (Models.DBObjects.Book dbBook in booksLibraryDataContext.Books)
