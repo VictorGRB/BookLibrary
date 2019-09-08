@@ -132,7 +132,7 @@ namespace BookLibrary.Models.DBObjects
 		
 		private string _Publisher;
 		
-		private decimal _NumberOfCopies;
+		private int _NumberOfCopies;
 		
 		private System.Guid _IDBooksCategory;
 		
@@ -253,7 +253,7 @@ namespace BookLibrary.Models.DBObjects
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NumberOfCopies", DbType="Decimal(18,0) NOT NULL")]
-		public decimal NumberOfCopies
+		public int NumberOfCopies
 		{
 			get
 			{

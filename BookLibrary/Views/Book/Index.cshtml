@@ -1,0 +1,70 @@
+﻿@model IEnumerable<BookLibrary.Models.BookModel>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.IDBook)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Author)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Publisher)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NumberOfCopies)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IDBooksCategory)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IDLocationInLibrary)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.IDBook)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Author)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Publisher)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NumberOfCopies)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IDBooksCategory)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IDLocationInLibrary)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new {  id=item.IDBook  }) |
+            @Html.ActionLink("Details", "Details", new {  id=item.IDBook  }) |
+            @Html.ActionLink("Delete", "Delete", new {  id=item.IDBook  })
+        </td>
+    </tr>
+}
+
+</table>
