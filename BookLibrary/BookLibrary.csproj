@@ -184,6 +184,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BookController.cs" />
     <Compile Include="Controllers\BooksCategoryController.cs" />
+    <Compile Include="Controllers\BorrowFormController.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LocationInLibraryController.cs" />
@@ -205,6 +206,7 @@
     <Compile Include="Models\LocationInLibraryModel.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\BookFormRepository.cs" />
     <Compile Include="Repository\BookRepository.cs" />
     <Compile Include="Repository\BooksCategoryRepository.cs" />
     <Compile Include="Repository\CustomerRepository.cs" />
@@ -299,6 +301,11 @@
     <Content Include="Views\Book\EditBook.cshtml" />
     <Content Include="Views\Book\DeleteBook.cshtml" />
     <Content Include="Views\Book\BookDetails.cshtml" />
+    <Content Include="Views\BorrowForm\CreateBorrowForm.cshtml" />
+    <Content Include="Views\BorrowForm\Index.cshtml" />
+    <Content Include="Views\BorrowForm\EditBorrowForm.cshtml" />
+    <Content Include="Views\BorrowForm\DeleteBorrowForm.cshtml" />
+    <Content Include="Views\BorrowForm\BorrowFormDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />

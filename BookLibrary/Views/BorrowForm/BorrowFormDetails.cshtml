@@ -1,0 +1,75 @@
+﻿@model BookLibrary.Models.BorrowFormModel
+
+@{
+    ViewBag.Title = "BorrowFormDetails";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>BorrowFormDetails</h2>
+
+<div>
+    <h4>BorrowFormModel</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.IDBorrowForm)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IDBorrowForm)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IDBook)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IDBook)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IDCustomer)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IDCustomer)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BorrowedFrom)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BorrowedFrom)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BorrowedUntil)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BorrowedUntil)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ReturnedOnTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ReturnedOnTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProperConditionsReturn)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProperConditionsReturn)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new {  id = Model.IDBorrowForm  }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
