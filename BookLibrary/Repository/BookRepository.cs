@@ -18,6 +18,11 @@ namespace BookLibrary.Repository
         {
             this.booksLibraryDataContext = booksLibraryDataContext;
         }
+
+        public List<BookModel>GetAllBooksByBooksCategory(Guid id)
+        {
+            List<BookModel> booksList = new List<BookModel>();
+        }
         public List<BookModel> GetAllBooks()
         {
             List<BookModel> bookList = new List<BookModel>();

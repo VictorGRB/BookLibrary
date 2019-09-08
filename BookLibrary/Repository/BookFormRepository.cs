@@ -43,10 +43,11 @@ namespace BookLibrary.Repository
         public List<BorrowFormModel> GetAllBorrowFormsByCustomerId(Guid id)
             {
                 List<BorrowFormModel> borrowFormList = new List<BorrowFormModel>();
-                List<BorrowForm> borrowForm = booksLibraryDataContext.BorrowForms.Where(x => x.IDCustomer == id).ToList();
+                List<BorrowForm> borrowForm = booksLibraryDataContext.BorrowForms.Where(y => y.IDCustomer == id).ToList();
                 foreach (Models.DBObjects.BorrowForm dbBorrowForm in borrowForm)
                 {
                     BorrowFormModel borrowFormModel = new BorrowFormModel();
+
                     borrowFormModel.IDBorrowForm = dbBorrowForm.IDBorrowForm;
                     borrowFormModel.IDBook = dbBorrowForm.IDBook;
                     borrowFormModel.IDCustomer = dbBorrowForm.IDCustomer;

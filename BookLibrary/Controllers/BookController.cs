@@ -99,7 +99,7 @@ namespace BookLibrary.Controllers
             try
             {
                 List<BorrowFormModel> borrowForms = borrowFormsRepository.GetAllBorrowFormsByBookId(id);
-                foreach (BorrowFormModel borrowForm in borrowForms)
+                foreach(BorrowFormModel borrowForm in borrowForms)
                 {
                     borrowFormsRepository.DeleteBorrowForm(borrowForm.IDBorrowForm);
                 }
