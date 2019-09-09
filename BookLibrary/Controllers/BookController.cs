@@ -8,6 +8,7 @@ using System.Web.Mvc;
 
 namespace BookLibrary.Controllers
 {
+    [Authorize(Roles ="Admin")]
     public class BookController : Controller
     {
         private BorrowFormRepository borrowFormsRepository = new BorrowFormRepository();
