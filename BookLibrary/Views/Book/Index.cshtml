@@ -36,7 +36,8 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
+@foreach (var item in Model)
+{
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.IDBook)
@@ -60,9 +61,21 @@
             @Html.DisplayFor(modelItem => item.IDLocationInLibrary)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new {  id=item.IDBook  }) |
-            @Html.ActionLink("Details", "Details", new {  id=item.IDBook  }) |
-            @Html.ActionLink("Delete", "Delete", new {  id=item.IDBook  })
+            @{ if (User.IsInRole("Admin"))
+                {
+            @Html.ActionLink("Edit", "Edit", new { id = item.IDBook }) 
+                } }
+
+
+
+            @Html.ActionLink("Details", "Details", new { id = item.IDBook }) 
+
+
+            @{ if (User.IsInRole("Admin"))
+                {
+            @Html.ActionLink("Delete", "Delete", new { id = item.IDBook })
+                    }
+                }
         </td>
     </tr>
 }

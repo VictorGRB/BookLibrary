@@ -66,9 +66,21 @@
             @Html.DisplayFor(modelItem => item.MonthlyFeePayed)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new {  id=item.IDCustomer  }) |
-            @Html.ActionLink("Details", "Details", new {  id=item.IDCustomer  }) |
-            @Html.ActionLink("Delete", "Delete", new {  id=item.IDCustomer  })
+            @{ if (User.IsInRole("Admin"))
+                {
+                    @Html.ActionLink("Edit", "Edit", new { id = item.IDCustomer })
+                } }
+
+
+
+            @Html.ActionLink("Details", "Details", new { id = item.IDCustomer })
+
+
+            @{ if (User.IsInRole("Admin"))
+                {
+                    @Html.ActionLink("Delete", "Delete", new { id = item.IDCustomer })
+                }
+            }
         </td>
     </tr>
 }

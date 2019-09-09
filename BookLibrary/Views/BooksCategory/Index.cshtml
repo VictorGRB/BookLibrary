@@ -36,9 +36,21 @@
             @Html.DisplayFor(modelItem => item.ChildAppropriate)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new {  id=item.IDBooksCategory }) |
-            @Html.ActionLink("Details", "Details", new {  id=item.IDBooksCategory  }) |
-            @Html.ActionLink("Delete", "Delete", new {  id=item.IDBooksCategory  })
+            @{ if (User.IsInRole("Admin"))
+                {
+                    @Html.ActionLink("Edit", "Edit", new { id = item.IDBooksCategory })
+                } }
+
+
+
+            @Html.ActionLink("Details", "Details", new { id = item.IDBooksCategory })
+
+
+            @{ if (User.IsInRole("Admin"))
+                {
+                    @Html.ActionLink("Delete", "Delete", new { id = item.IDBooksCategory })
+                }
+            }
         </td>
     </tr>
 }

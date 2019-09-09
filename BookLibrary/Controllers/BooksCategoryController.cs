@@ -26,13 +26,13 @@ namespace BookLibrary.Controllers
             Models.BooksCategoryModel booksCategoryModel = booksCategoryRepository.GetBookCategoryByID(id);
             return View("BooksCategoryDetails",booksCategoryModel);
         }
-
+        [Authorize(Roles = "Admin")]
         // GET: BooksCategory/Create
         public ActionResult Create()
         {
             return View("CreateBooksCategory");
         }
-
+        [Authorize(Roles = "Admin")]
         // POST: BooksCategory/Create
         [HttpPost]
         public ActionResult Create(FormCollection collection)
@@ -51,14 +51,14 @@ namespace BookLibrary.Controllers
                 return View("CreateBooksCategory");
             }
         }
-
+        [Authorize(Roles = "Admin")]
         // GET: BooksCategory/Edit/5
         public ActionResult Edit(Guid id)
         {
             Models.BooksCategoryModel booksCategoryModel = booksCategoryRepository.GetBookCategoryByID(id);
             return View("EditBooksCategory",booksCategoryModel);
         }
-
+        [Authorize(Roles = "Admin")]
         // POST: BooksCategory/Edit/5
         [HttpPost]
         public ActionResult Edit(Guid id, FormCollection collection)
@@ -76,14 +76,14 @@ namespace BookLibrary.Controllers
                 return View("EditBooksCategory");
             }
         }
-
+        [Authorize(Roles = "Admin")]
         // GET: BooksCategory/Delete/5
         public ActionResult Delete(Guid id)
         {
             Models.BooksCategoryModel booksCategoryModel = booksCategoryRepository.GetBookCategoryByID(id);
             return View("DeleteBooksCategory",booksCategoryModel);
         }
-
+        [Authorize(Roles = "Admin")]
         // POST: BooksCategory/Delete/5
         [HttpPost]
         public ActionResult Delete(Guid id, FormCollection collection)

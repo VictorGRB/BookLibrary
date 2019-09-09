@@ -48,9 +48,21 @@
             @Html.DisplayFor(modelItem => item.Shelf)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new {  id=item.IDLocationInLibrary  }) |
-            @Html.ActionLink("Details", "Details", new {  id=item.IDLocationInLibrary  }) |
-            @Html.ActionLink("Delete", "Delete", new {  id=item.IDLocationInLibrary  })
+            @{ if (User.IsInRole("Admin"))
+                {
+                    @Html.ActionLink("Edit", "Edit", new { id = item.IDLocationInLibrary })
+                } }
+
+
+
+            @Html.ActionLink("Details", "Details", new { id = item.IDLocationInLibrary })
+
+
+            @{ if (User.IsInRole("Admin"))
+                {
+                    @Html.ActionLink("Delete", "Delete", new { id = item.IDLocationInLibrary })
+                }
+            }
         </td>
     </tr>
 }

@@ -8,7 +8,7 @@ using System.Web.Mvc;
 
 namespace BookLibrary.Controllers
 {
-    [Authorize(Roles ="Admin")]
+    
     public class BookController : Controller
     {
         private BorrowFormRepository borrowFormsRepository = new BorrowFormRepository();
@@ -28,7 +28,7 @@ namespace BookLibrary.Controllers
             Models.BookModel bookModel = bookRepository.GetBookByID(id);
             return View("BookDetails",bookModel);
         }
-
+        [Authorize(Roles = "Admin")]
         // GET: Book/Create
         public ActionResult Create()
         {
@@ -42,7 +42,7 @@ namespace BookLibrary.Controllers
 
             return View("CreateBook");
         }
-
+        [Authorize(Roles = "Admin")]
         // POST: Book/Create
         [HttpPost]
         public ActionResult Create(FormCollection collection)
@@ -62,12 +62,13 @@ namespace BookLibrary.Controllers
         }
 
         // GET: Book/Edit/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit(Guid id)
         {
             Models.BookModel bookModel = bookRepository.GetBookByID(id);
             return View("EditBook",bookModel);
         }
-
+        [Authorize(Roles = "Admin")]
         // POST: Book/Edit/5
         [HttpPost]
         public ActionResult Edit(Guid id, FormCollection collection)
@@ -85,14 +86,14 @@ namespace BookLibrary.Controllers
                 return View("EditBook");
             }
         }
-
+        [Authorize(Roles = "Admin")]
         // GET: Book/Delete/5
         public ActionResult Delete(Guid id)
         {
             Models.BookModel bookModel = bookRepository.GetBookByID(id);
             return View("DeleteBook",bookModel);
         }
-
+        [Authorize(Roles = "Admin")]
         // POST: Book/Delete/5
         [HttpPost]
         public ActionResult Delete(Guid id, FormCollection collection)

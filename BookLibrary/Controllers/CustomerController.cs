@@ -25,13 +25,13 @@ namespace BookLibrary.Controllers
             Models.CustomerModel customerModel = customerRepository.GetCustomerByID(id);
             return View("CustomerDetails",customerModel);
         }
-
+        [Authorize(Roles = "Admin")]
         // GET: Customer/Create
         public ActionResult Create()
         {
             return View("CreateCustomer");
         }
-
+        [Authorize(Roles = "Admin")]
         // POST: Customer/Create
         [HttpPost]
         public ActionResult Create(FormCollection collection)
@@ -49,14 +49,14 @@ namespace BookLibrary.Controllers
                 return View("CreateCustomer");
             }
         }
-
+        [Authorize(Roles = "Admin")]
         // GET: Customer/Edit/5
         public ActionResult Edit(Guid id)
         {
             Models.CustomerModel customerModel = customerRepository.GetCustomerByID(id);
             return View("EditCustomer",customerModel);
         }
-
+        [Authorize(Roles = "Admin")]
         // POST: Customer/Edit/5
         [HttpPost]
         public ActionResult Edit(Guid id, FormCollection collection)
@@ -74,14 +74,14 @@ namespace BookLibrary.Controllers
                 return View("EditCustomer");
             }
         }
-
+        [Authorize(Roles = "Admin")]
         // GET: Customer/Delete/5
         public ActionResult Delete(Guid id)
         {
             Models.CustomerModel customerModel = customerRepository.GetCustomerByID(id);
             return View("DeleteCustomer",customerModel);
         }
-
+        [Authorize(Roles = "Admin")]
         // POST: Customer/Delete/5
         [HttpPost]
         public ActionResult Delete(Guid id, FormCollection collection)

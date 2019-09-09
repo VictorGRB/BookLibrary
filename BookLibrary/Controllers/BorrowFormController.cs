@@ -25,7 +25,7 @@ namespace BookLibrary.Controllers
             Models.BorrowFormModel borrowFormModel = borrowFormRepository.GetBorrowFormByID(id);
             return View("BorrowFormDetails",borrowFormModel);
         }
-
+        [Authorize(Roles = "Admin")]
         // GET: BorrowForm/Create
         public ActionResult Create()
         {
@@ -38,7 +38,7 @@ namespace BookLibrary.Controllers
             ViewData["customer"] = cust;
             return View("CreateBorrowForm");
         }
-
+        [Authorize(Roles = "Admin")]
         // POST: BorrowForm/Create
         [HttpPost]
         public ActionResult Create(FormCollection collection)
@@ -56,14 +56,14 @@ namespace BookLibrary.Controllers
                 return View("CreateBorrowForm");
             }
         }
-
+        [Authorize(Roles = "Admin")]
         // GET: BorrowForm/Edit/5
         public ActionResult Edit(Guid id)
         {
             Models.BorrowFormModel borrowFormModel = borrowFormRepository.GetBorrowFormByID(id);
             return View("EditBorrowForm",borrowFormModel);
         }
-
+        [Authorize(Roles = "Admin")]
         // POST: BorrowForm/Edit/5
         [HttpPost]
         public ActionResult Edit(Guid id, FormCollection collection)
@@ -81,14 +81,14 @@ namespace BookLibrary.Controllers
                 return View("EditBorrowForm");
             }
         }
-
+        [Authorize(Roles = "Admin")]
         // GET: BorrowForm/Delete/5
         public ActionResult Delete(Guid id)
         {
             Models.BorrowFormModel borrowFormModel = borrowFormRepository.GetBorrowFormByID(id);
             return View("DeleteBorrowForm",borrowFormModel);
         }
-
+        [Authorize(Roles = "Admin")]
         // POST: BorrowForm/Delete/5
         [HttpPost]
         public ActionResult Delete(Guid id, FormCollection collection)

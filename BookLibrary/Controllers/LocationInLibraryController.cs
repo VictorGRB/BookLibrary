@@ -25,13 +25,13 @@ namespace BookLibrary.Controllers
             Models.LocationInLibraryModel locationInLibraryModel = locationInLibraryRepository.GetLocationInLibraryByID(id);
             return View("LocationInLibraryDetails",locationInLibraryModel);
         }
-
+        [Authorize(Roles = "Admin")]
         // GET: LocationInLibrary/Create
         public ActionResult Create()
         {
             return View("CreateLocationInLibrary");
         }
-
+        [Authorize(Roles = "Admin")]
         // POST: LocationInLibrary/Create
         [HttpPost]
         public ActionResult Create(FormCollection collection)
@@ -49,14 +49,14 @@ namespace BookLibrary.Controllers
                 return View("CreateLocationInLibrary");
             }
         }
-
+        [Authorize(Roles = "Admin")]
         // GET: LocationInLibrary/Edit/5
         public ActionResult Edit(Guid id)
         {
             Models.LocationInLibraryModel locationInLibraryModel = locationInLibraryRepository.GetLocationInLibraryByID(id);
             return View("EditLocationInLibrary",locationInLibraryModel);
         }
-
+        [Authorize(Roles = "Admin")]
         // POST: LocationInLibrary/Edit/5
         [HttpPost]
         public ActionResult Edit(Guid id, FormCollection collection)
@@ -74,14 +74,14 @@ namespace BookLibrary.Controllers
                 return View("EditLocationInLibrary");
             }
         }
-
+        [Authorize(Roles = "Admin")]
         // GET: LocationInLibrary/Delete/5
         public ActionResult Delete(Guid id)
         {
             Models.LocationInLibraryModel locationInLibraryModel = locationInLibraryRepository.GetLocationInLibraryByID(id);
             return View("DeleteLocationInLibrary",locationInLibraryModel);
         }
-
+        [Authorize(Roles = "Admin")]
         // POST: LocationInLibrary/Delete/5
         [HttpPost]
         public ActionResult Delete(Guid id, FormCollection collection)

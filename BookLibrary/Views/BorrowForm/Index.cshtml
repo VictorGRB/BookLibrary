@@ -60,9 +60,21 @@
             @Html.DisplayFor(modelItem => item.ProperConditionsReturn)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new {  id=item.IDBorrowForm  }) |
-            @Html.ActionLink("Details", "Details", new {  id=item.IDBorrowForm  }) |
-            @Html.ActionLink("Delete", "Delete", new {  id=item.IDBorrowForm  })
+            @{ if (User.IsInRole("Admin"))
+                {
+                    @Html.ActionLink("Edit", "Edit", new { id = item.IDBorrowForm })
+                } }
+
+
+
+            @Html.ActionLink("Details", "Details", new { id = item.IDBorrowForm })
+
+
+            @{ if (User.IsInRole("Admin"))
+                {
+                    @Html.ActionLink("Delete", "Delete", new { id = item.IDBorrowForm })
+                }
+            }
         </td>
     </tr>
 }

@@ -24,16 +24,21 @@
                     @*<li>@Html.ActionLink("Home", "Index", "Home")</li>
         <li>@Html.ActionLink("About", "About", "Home")</li>
         <li>@Html.ActionLink("Contact", "Contact", "Home")</li>*@
+
                     <li>@Html.ActionLink("View BooksCategories", "Index", "BooksCategory")</li>
-                    <li>@Html.ActionLink("Create BooksCategory", "Create", "BooksCategory")</li>
-                    <li>@Html.ActionLink("View LocationInLibrary", "Index", "LocationInLibrary")</li>
-                    <li>@Html.ActionLink("Create LocationInLibrary", "Create", "LocationInLibrary")</li>
-                    <li>@Html.ActionLink("View Customers", "Index", "Customer")</li>
-                    <li>@Html.ActionLink("Create Customer", "Create", "Customer")</li>
-                    <li>@Html.ActionLink("View Books", "Index", "Book")</li>
-                    <li>@Html.ActionLink("Create Book", "Create", "Book")</li>
                     <li>@Html.ActionLink("View BorrowForms", "Index", "BorrowForm")</li>
+                    <li>@Html.ActionLink("View Customers", "Index", "Customer")</li>
+                    <li>@Html.ActionLink("View LocationInLibrary", "Index", "LocationInLibrary")</li>
+                    <li>@Html.ActionLink("View Books", "Index", "Book")</li>
+
+                    @{ if (User.IsInRole("Admin"))
+                                   {
+                    <li>@Html.ActionLink("Create BooksCategory", "Create", "BooksCategory")</li>
                     <li>@Html.ActionLink("Create BorrowForm", "Create", "BorrowForm")</li>
+                    <li>@Html.ActionLink("Create Customer", "Create", "Customer")</li>
+                    <li>@Html.ActionLink("Create LocationInLibrary", "Create", "LocationInLibrary")</li>
+                    <li>@Html.ActionLink("Create Book", "Create", "Book")</li>
+                            } }
 
                 </ul>
                 @Html.Partial("_LoginPartial")
