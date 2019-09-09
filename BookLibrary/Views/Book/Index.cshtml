@@ -10,8 +10,8 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table class="table">
-    <tr>
+<table class="table"  style="background-color:yellowgreen">
+    <tr >
         <th>
             @Html.DisplayNameFor(model => model.IDBook)
         </th>
@@ -38,7 +38,7 @@
 
 @foreach (var item in Model)
 {
-    <tr>
+    <tr >
         <td>
             @Html.DisplayFor(modelItem => item.IDBook)
         </td>
