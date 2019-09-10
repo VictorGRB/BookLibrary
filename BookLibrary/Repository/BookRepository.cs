@@ -60,6 +60,7 @@ namespace BookLibrary.Repository
                 bookModel.NumberOfCopies = dbBook.NumberOfCopies;
                 bookModel.IDBooksCategory = dbBook.IDBooksCategory;
                 bookModel.IDLocationInLibrary = dbBook.IDLocationInLibrary;
+                bookModel.imageUrl = dbBook.imageUrl;
 
                 booksList.Add(bookModel);
 
@@ -80,6 +81,7 @@ namespace BookLibrary.Repository
                 bookModel.NumberOfCopies = dbBook.NumberOfCopies;
                 bookModel.IDBooksCategory = dbBook.IDBooksCategory;
                 bookModel.IDLocationInLibrary = dbBook.IDLocationInLibrary;
+                bookModel.imageUrl = dbBook.imageUrl;
 
                 booksList.Add(bookModel);
 
@@ -117,6 +119,7 @@ namespace BookLibrary.Repository
                 existingBook.NumberOfCopies = bookModel.NumberOfCopies;
                 existingBook.IDBooksCategory = bookModel.IDBooksCategory;
                 existingBook.IDLocationInLibrary = bookModel.IDLocationInLibrary;
+                existingBook.imageUrl = bookModel.imageUrl;
                 booksLibraryDataContext.SubmitChanges();
             }
         }
@@ -141,6 +144,7 @@ namespace BookLibrary.Repository
                 bookModel.NumberOfCopies = dbBook.NumberOfCopies;
                 bookModel.IDBooksCategory = dbBook.IDBooksCategory;
                 bookModel.IDLocationInLibrary = dbBook.IDLocationInLibrary;
+                bookModel.imageUrl = dbBook.imageUrl;
 
                 return bookModel;
             }
@@ -158,6 +162,7 @@ namespace BookLibrary.Repository
                 dbBookModel.NumberOfCopies = bookModel.NumberOfCopies;
                 dbBookModel.IDBooksCategory = bookModel.IDBooksCategory;
                 dbBookModel.IDLocationInLibrary = bookModel.IDLocationInLibrary;
+                dbBookModel.imageUrl = bookModel.imageUrl;
 
                 return dbBookModel;
             }

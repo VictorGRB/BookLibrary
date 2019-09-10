@@ -189,6 +189,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LocationInLibraryController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\UserBooksController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -309,6 +310,7 @@
     <Content Include="Views\BorrowForm\BorrowFormDetails.cshtml" />
     <Content Include="Views\Book\Details.cshtml" />
     <Content Include="Views\LocationInLibrary\Details.cshtml" />
+    <Content Include="Views\UserBooks\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />

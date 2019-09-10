@@ -11,7 +11,7 @@
     @Html.ActionLink("Create New", "Create")
 </p>
 <table class="table"  style="background-color:yellowgreen" >
-    <tr >
+    <tr>
         <th>
             @Html.DisplayNameFor(model => model.IDBook)
         </th>
@@ -33,51 +33,58 @@
         <th>
             @Html.DisplayNameFor(model => model.IDLocationInLibrary)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.imageUrl)
+        </th>
+        
         <th></th>
     </tr>
 
 @foreach (var item in Model)
 {
-    <tr >
-        <td>
-            @Html.DisplayFor(modelItem => item.IDBook)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Author)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Publisher)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.NumberOfCopies)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.IDBooksCategory)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.IDLocationInLibrary)
-        </td>
-        <td>
-            @{ if (User.IsInRole("Admin"))
-                {
-            @Html.ActionLink("Edit", "Edit", new { id = item.IDBook }) 
-                } }
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.IDBook)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Name)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Author)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Publisher)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.NumberOfCopies)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.IDBooksCategory)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.IDLocationInLibrary)
+    </td>
+    <td>
+        <img src=" @Html.DisplayFor(modelItem => item.imageUrl)" height="30" />
+    </td>
+    <td>
+        @{ if (User.IsInRole("Admin"))
+            {
+                @Html.ActionLink("Edit", "Edit", new { id = item.IDBook })
+            } }
 
 
 
-            @Html.ActionLink("Details", "Details", new { id = item.IDBook }) 
+        @Html.ActionLink("Details", "Details", new { id = item.IDBook })
 
 
-            @{ if (User.IsInRole("Admin"))
-                {
-            @Html.ActionLink("Delete", "Delete", new { id = item.IDBook })
-                    }
-                }
-        </td>
-    </tr>
+        @{ if (User.IsInRole("Admin"))
+            {
+                @Html.ActionLink("Delete", "Delete", new { id = item.IDBook })
+            }
+        }
+    </td>
+</tr>
 }
 
 </table>

@@ -1,0 +1,30 @@
+﻿@model IEnumerable<BookLibrary.Models.BookModel>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    @foreach(var item in Model)
+    {
+        <div>
+            <div>
+                <img src=" @Html.DisplayFor(modelItem => item.imageUrl)" /><br />
+                <b>@Html.DisplayFor(modelItem => item.Name)</b><br />
+                Author:@Html.DisplayFor(modelItem => item.Author)<br />
+                Publisher: @Html.DisplayFor(modelItem => item.Publisher)<br />
+                Copies: @Html.DisplayFor(modelItem => item.NumberOfCopies)<br />
+
+            </div>
+
+        </div>
+    }
+
+</table>
+

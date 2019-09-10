@@ -20,5 +20,6 @@ namespace BookLibrary.Models
 
         public Guid IDBooksCategory { get; set; }
         public Guid IDLocationInLibrary { get; set; }
+        public string imageUrl { get; set; }
     }
 }
