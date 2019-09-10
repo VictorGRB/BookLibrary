@@ -1,5 +1,6 @@
 ﻿using BookLibrary.Models;
 using BookLibrary.Repository;
+using BookLibrary.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,8 +23,10 @@ namespace BookLibrary.Controllers
         // GET: LocationInLibrary/Details/5
         public ActionResult Details(Guid id)
         {
-            Models.LocationInLibraryModel locationInLibraryModel = locationInLibraryRepository.GetLocationInLibraryByID(id);
-            return View("LocationInLibraryDetails",locationInLibraryModel);
+            //Models.LocationInLibraryModel locationInLibraryModel = locationInLibraryRepository.GetLocationInLibraryByID(id);
+            //return View("LocationInLibraryDetails",locationInLibraryModel);
+            LocationInLibraryBooksViewModel viewModel = locationInLibraryRepository.GetLocationInLibraryBooks(id);
+            return View(viewModel);
         }
         [Authorize(Roles = "Admin")]
         // GET: LocationInLibrary/Create

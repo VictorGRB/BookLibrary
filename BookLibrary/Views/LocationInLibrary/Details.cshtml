@@ -1,0 +1,68 @@
+﻿@model BookLibrary.ViewModels.LocationInLibraryBooksViewModel
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>LocationInLibraryBooksViewModel</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Floor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Floor)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Sector)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sector)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Shelf)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Shelf)
+        </dd>
+
+    </dl>
+</div>
+@foreach(var item in Model.Books)
+{
+<div>
+    <p>
+        @Html.DisplayFor(modelItem => item.Name)
+    </p>
+    <p>
+        @Html.DisplayFor(modelItem => item.Author)
+    </p>
+    <p>
+        @Html.DisplayFor(modelItem => item.Publisher)
+    </p>
+    <p>
+        @Html.DisplayFor(modelItem => item.NumberOfCopies)
+    </p>
+</div>
+}
+<p>
+    @Html.ActionLink("Back to List","Index")
+</p>
+

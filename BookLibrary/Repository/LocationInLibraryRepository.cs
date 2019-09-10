@@ -1,4 +1,6 @@
 ﻿using BookLibrary.Models;
+using BookLibrary.Models.DBObjects;
+using BookLibrary.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,6 +18,33 @@ namespace BookLibrary.Repository
         public LocationInLibraryRepository(Models.DBObjects.BookLibraryModelsDataContext booksLibraryDataContext)
         {
             this.booksLibraryDataContext = booksLibraryDataContext;
+        }
+        public LocationInLibraryBooksViewModel GetLocationInLibraryBooks(Guid locationInLibraryID)
+        {
+            LocationInLibraryBooksViewModel locationInLibraryBooksViewModel = new LocationInLibraryBooksViewModel();
+            LocationInLibrary locationInLibrary = booksLibraryDataContext.LocationInLibraries.FirstOrDefault(x => x.IDLocationInLibrary == locationInLibraryID);
+            if (locationInLibrary != null)
+            {
+                locationInLibraryBooksViewModel.Name = locationInLibrary.Name;
+                locationInLibraryBooksViewModel.Floor = locationInLibrary.Floor;
+                locationInLibraryBooksViewModel.Sector = locationInLibrary.Sector;
+                locationInLibraryBooksViewModel.Name = locationInLibrary.Name;
+
+                IQueryable<Book> locationInLibraryBooks = booksLibraryDataContext.Books.Where(x => x.IDLocationInLibrary == locationInLibraryID);
+                foreach(Book dbBook in locationInLibraryBooks)
+                {
+                    Models.BookModel bookModel = new Models.BookModel();
+                    bookModel.Name = dbBook.Name;
+                    bookModel.Author = dbBook.Author;
+                    bookModel.Publisher = dbBook.Publisher;
+                    bookModel.NumberOfCopies = dbBook.NumberOfCopies;
+                    
+
+                    locationInLibraryBooksViewModel.Books.Add(bookModel);
+
+                }
+            }
+            return locationInLibraryBooksViewModel;
         }
         public List<LocationInLibraryModel> GetAllLocationsInLibrary()
         {

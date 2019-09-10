@@ -2,13 +2,11 @@
 using BookLibrary.Repository;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace BookLibrary.Controllers
 {
-    
+
     public class BookController : Controller
     {
         private BorrowFormRepository borrowFormsRepository = new BorrowFormRepository();
@@ -26,7 +24,8 @@ namespace BookLibrary.Controllers
         public ActionResult Details(Guid id)
         {
             Models.BookModel bookModel = bookRepository.GetBookByID(id);
-            return View("BookDetails",bookModel);
+            return View("BookDetails", bookModel);
+
         }
         [Authorize(Roles = "Admin")]
         // GET: Book/Create
