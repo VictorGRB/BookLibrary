@@ -212,6 +212,13 @@
     <Compile Include="Repository\BooksCategoryRepository.cs" />
     <Compile Include="Repository\CustomerRepository.cs" />
     <Compile Include="Repository\LocationInLibraryRepository.cs" />
+    <Compile Include="SendMail.aspx.cs">
+      <DependentUpon>SendMail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SendMail.aspx.designer.cs">
+      <DependentUpon>SendMail.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\LocationInLibraryBooksViewModel.cs" />
   </ItemGroup>
@@ -249,6 +256,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="SendMail.aspx" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
