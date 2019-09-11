@@ -8,6 +8,7 @@ namespace BookLibrary.Repository
 {
     public class BookRepository
     {
+        
         private Models.DBObjects.BookLibraryModelsDataContext booksLibraryDataContext;
         public BookRepository()
         {
@@ -17,35 +18,7 @@ namespace BookLibrary.Repository
         {
             this.booksLibraryDataContext = booksLibraryDataContext;
         }
-        //public BookLocationInLibraryViewModel GetBookLocationInLibrary(Guid bookID)
-        //{
-        //    BookLocationInLibraryViewModel bookLocationInLibraryViewModel = new BookLocationInLibraryViewModel();
-        //    Book book = booksLibraryDataContext.Books.FirstOrDefault(x => x.IDBook == bookID);
-
-        //    if (book != null)
-        //    {
-        //        bookLocationInLibraryViewModel.Name = book.Name;
-        //        bookLocationInLibraryViewModel.Author = book.Author;
-        //        bookLocationInLibraryViewModel.Publisher = book.Publisher;
-        //        bookLocationInLibraryViewModel.NumberOfCopies = book.NumberOfCopies;
-        //        bookLocationInLibraryViewModel.IDBooksCategory = book.IDBooksCategory;
-
-        //        IQueryable<LocationInLibrary> bookLocationsInLibrary = booksLibraryDataContext.LocationInLibraries.Where(x => x.IDBook == bookID);
-        //        foreach(LocationInLibrary dbLocationInLibrary in bookLocationsInLibrary)
-        //        {
-        //            Models.LocationInLibraryModel locationInLibraryModel = new Models.LocationInLibraryModel();
-                    
-        //            locationInLibraryModel.Floor = dbLocationInLibrary.Floor;
-        //            locationInLibraryModel.Sector = dbLocationInLibrary.Sector;
-        //            locationInLibraryModel.Shelf = dbLocationInLibrary.Shelf;
-
-        //            bookLocationInLibraryViewModel.LocationsInLIbrary.Add(locationInLibraryModel);
-
-        //        }
-        //    }
-        //    return bookLocationInLibraryViewModel;
-        //}
-
+       
         public List<BookModel>GetAllBooksByBooksCategory(Guid id)
         {
             List<BookModel> booksList = new List<BookModel>();
