@@ -10,7 +10,7 @@
 <div>
     <h4>LocationInLibraryBooksViewModel</h4>
     <hr />
-    <dl class="dl-horizontal">
+    <dl class="dl-horizontal"style="background-color:darkgrey">
         <dt>
             @Html.DisplayNameFor(model => model.Name)
         </dt>
@@ -47,7 +47,7 @@
 </div>
 @foreach(var item in Model.Books)
 {
-<div>
+<div style="background-color:darkgrey">
     <p>
         @Html.DisplayFor(modelItem => item.Name)
     </p>

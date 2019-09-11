@@ -7,14 +7,14 @@
 
 <h2>Index</h2>
 
-<p>
+@*<p>
     @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
+</p>*@
+<table class="table"style="background-color:darkgrey">
     @foreach(var item in Model)
     {
         <div>
-            <div>
+            <div style="background-color:darkgrey">
                 <img src=" @Html.DisplayFor(modelItem => item.imageUrl)" /><br />
                 <b>@Html.DisplayFor(modelItem => item.Name)</b><br />
                 Author:@Html.DisplayFor(modelItem => item.Author)<br />
