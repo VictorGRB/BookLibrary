@@ -22,6 +22,7 @@ namespace BookLibrary.Controllers
         // GET: BorrowForm/Details/5
         public ActionResult Details(Guid id)
         {
+            
             Models.BorrowFormModel borrowFormModel = borrowFormRepository.GetBorrowFormByID(id);
             return View("BorrowFormDetails",borrowFormModel);
         }
@@ -45,6 +46,7 @@ namespace BookLibrary.Controllers
         {
             try
             {
+                
                 // TODO: Add insert logic here
                 Models.BorrowFormModel borrowFormModel = new Models.BorrowFormModel();
                 UpdateModel(borrowFormModel);

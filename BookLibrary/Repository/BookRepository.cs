@@ -19,6 +19,7 @@ namespace BookLibrary.Repository
             this.booksLibraryDataContext = booksLibraryDataContext;
         }
        
+
         public List<BookModel>GetAllBooksByBooksCategory(Guid id)
         {
             List<BookModel> booksList = new List<BookModel>();
@@ -78,6 +79,12 @@ namespace BookLibrary.Repository
         {
             bookModel.IDBook = Guid.NewGuid();
             booksLibraryDataContext.Books.InsertOnSubmit(MapModelToDbObject(bookModel));
+            booksLibraryDataContext.SubmitChanges();
+        }
+        public void DeductBook(Guid ID)
+        {
+            Book deduct = booksLibraryDataContext.Books.FirstOrDefault(x => x.IDBook == ID);
+            deduct.NumberOfCopies--;
             booksLibraryDataContext.SubmitChanges();
         }
         public void UpdateBook(BookModel bookModel)

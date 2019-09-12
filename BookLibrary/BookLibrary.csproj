@@ -207,7 +207,7 @@
     <Compile Include="Models\LocationInLibraryModel.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repository\BookFormRepository.cs" />
+    <Compile Include="Repository\BorrowFormRepository.cs" />
     <Compile Include="Repository\BookRepository.cs" />
     <Compile Include="Repository\BooksCategoryRepository.cs" />
     <Compile Include="Repository\CustomerRepository.cs" />
