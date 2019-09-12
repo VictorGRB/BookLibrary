@@ -56,12 +56,7 @@ namespace BookLibrary.Controllers
         // GET: /Account/Login
         [AllowAnonymous]
         public ActionResult Login(string returnUrl)
-        {
-            if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
-                return RedirectToAction("Index", "Customer");
-            if (User.Identity.IsAuthenticated && User.IsInRole("User"))
-                return RedirectToAction("Index", "UserBooks");
-
+        {           
             ViewBag.ReturnUrl = returnUrl;
             return View();
         }
@@ -83,8 +78,8 @@ namespace BookLibrary.Controllers
             var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
             switch (result)
             {
-                case SignInStatus.Success:
-                    return RedirectToLocal(returnUrl);
+                case SignInStatus.Success:                    
+                       return RedirectToLocal(returnUrl);
                 case SignInStatus.LockedOut:
                     return View("Lockout");
                 case SignInStatus.RequiresVerification:
