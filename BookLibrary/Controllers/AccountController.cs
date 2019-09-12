@@ -58,7 +58,7 @@ namespace BookLibrary.Controllers
         public ActionResult Login(string returnUrl)
         {
             if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Index", "Customer");
             if (User.Identity.IsAuthenticated && User.IsInRole("User"))
                 return RedirectToAction("Index", "UserBooks");
 
