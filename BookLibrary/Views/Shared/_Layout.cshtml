@@ -25,10 +25,14 @@
         <li>@Html.ActionLink("About", "About", "Home")</li>
         <li>@Html.ActionLink("Contact", "Contact", "Home")</li>*@
 
-                    <li >@Html.ActionLink("View BooksCategories", "Index", "BooksCategory")</li>
+                    @{
+                        if (User.IsInRole("Admin") || User.IsInRole("User"))
+                        {
+                            <li>@Html.ActionLink("View BooksCategories", "Index", "BooksCategory")</li>
 
-                    <li>@Html.ActionLink("View LocationInLibrary", "Index", "LocationInLibrary")</li>
-
+                            <li>@Html.ActionLink("View LocationInLibrary", "Index", "LocationInLibrary")</li>
+                        }
+                    }
                     @{
                         if (User.IsInRole("User"))
                         {
