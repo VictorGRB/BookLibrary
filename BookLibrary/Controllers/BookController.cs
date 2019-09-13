@@ -10,8 +10,6 @@ namespace BookLibrary.Controllers
 
     public class BookController : Controller
     {
-        private Models.DBObjects.BookLibraryModelsDataContext booksLibraryDataContext=new Models.DBObjects.BookLibraryModelsDataContext();
-        private Models.BookModel bkModel = new BookModel();
         private BorrowFormRepository borrowFormsRepository = new BorrowFormRepository();
         private LocationInLibraryRepository locationInLibraryRepository = new LocationInLibraryRepository();
         private BooksCategoryRepository booksCategoryRepository = new BooksCategoryRepository();
@@ -29,6 +27,10 @@ namespace BookLibrary.Controllers
             {
                 return View(books.Where(x => x.Author.IndexOf (search, StringComparison.OrdinalIgnoreCase) > 0 || search == null).ToList());
             }
+            //else if (searchBy == null)
+            //{
+            //    return View("Index", books);
+            //}
             else
             {
                 return View("Index", books);
