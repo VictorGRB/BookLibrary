@@ -2,6 +2,7 @@
 using BookLibrary.Repository;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Web.Mvc;
 
 namespace BookLibrary.Controllers
@@ -9,15 +10,30 @@ namespace BookLibrary.Controllers
 
     public class BookController : Controller
     {
+        private Models.DBObjects.BookLibraryModelsDataContext booksLibraryDataContext=new Models.DBObjects.BookLibraryModelsDataContext();
+        private Models.BookModel bkModel = new BookModel();
         private BorrowFormRepository borrowFormsRepository = new BorrowFormRepository();
         private LocationInLibraryRepository locationInLibraryRepository = new LocationInLibraryRepository();
         private BooksCategoryRepository booksCategoryRepository = new BooksCategoryRepository();
         private Repository.BookRepository bookRepository = new Repository.BookRepository();
         // GET: Book
-        public ActionResult Index()
+        public ActionResult Index(string searchBy,string search)
         {
             List<Models.BookModel> books = bookRepository.GetAllBooks();
-            return View("Index",books);
+            //return View("Index", books);
+            if (searchBy =="Name")
+            {
+                return View(books.Where(x => x.Name.IndexOf (search,StringComparison.OrdinalIgnoreCase)>0 || search == null).ToList());
+            }
+            else if(searchBy =="Author")
+            {
+                return View(books.Where(x => x.Author.IndexOf (search, StringComparison.OrdinalIgnoreCase) > 0 || search == null).ToList());
+            }
+            else
+            {
+                return View("Index", books);
+            }
+
         }
 
         // GET: Book/Details/5

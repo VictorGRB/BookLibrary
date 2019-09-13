@@ -13,10 +13,21 @@ namespace BookLibrary.Controllers
         private BorrowFormRepository borrowFormRepository = new BorrowFormRepository();
         private Repository.CustomerRepository customerRepository = new Repository.CustomerRepository();
         // GET: Customer
-        public ActionResult Index()
+        public ActionResult Index( string searchBy, string search)
         {
             List<Models.CustomerModel> customers = customerRepository.GetAllCustomers();
-            return View("Index",customers);
+            if (searchBy == "Name")
+            {
+                return View(customers.Where(x => x.Name.IndexOf(search, StringComparison.OrdinalIgnoreCase) > 0 || search == null).ToList());
+            }
+            else if (searchBy == "EmailAddress")
+            {
+                return View(customers.Where(x => x.EmailAddress.IndexOf(search, StringComparison.OrdinalIgnoreCase) > 0 || search == null).ToList());
+            }
+            else
+            {
+                return View("Index", customers);
+            }
         }
 
         // GET: Customer/Details/5
