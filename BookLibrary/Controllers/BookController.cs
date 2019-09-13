@@ -27,10 +27,7 @@ namespace BookLibrary.Controllers
             {
                 return View(books.Where(x => x.Author.IndexOf (search, StringComparison.OrdinalIgnoreCase) > 0 || search == null).ToList());
             }
-            //else if (searchBy == null)
-            //{
-            //    return View("Index", books);
-            //}
+            
             else
             {
                 return View("Index", books);
