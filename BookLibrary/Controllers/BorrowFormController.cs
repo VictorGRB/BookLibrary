@@ -1,4 +1,5 @@
-﻿using BookLibrary.Repository;
+﻿using BookLibrary.Models;
+using BookLibrary.Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,7 +23,7 @@ namespace BookLibrary.Controllers
         // GET: BorrowForm/Details/5
         public ActionResult Details(Guid id)
         {
-            
+            //bookRepository.DeductBook(id);
             Models.BorrowFormModel borrowFormModel = borrowFormRepository.GetBorrowFormByID(id);
             return View("BorrowFormDetails",borrowFormModel);
         }
@@ -46,19 +47,22 @@ namespace BookLibrary.Controllers
         {
             try
             {
-                
-                
                 // TODO: Add insert logic here
                 Models.BorrowFormModel borrowFormModel = new Models.BorrowFormModel();
                 UpdateModel(borrowFormModel);
                 borrowFormRepository.InsertBorrowForm(borrowFormModel);
+                
+                
                 return RedirectToAction("Index");
             }
             catch
             {
                 return View("CreateBorrowForm");
             }
+       
         }
+        
+       
         [Authorize(Roles = "Admin")]
         // GET: BorrowForm/Edit/5
         public ActionResult Edit(Guid id)
