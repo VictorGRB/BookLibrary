@@ -28,7 +28,7 @@ namespace BookLibrary.Repository
                 locationInLibraryBooksViewModel.Name = locationInLibrary.Name;
                 locationInLibraryBooksViewModel.Floor = locationInLibrary.Floor;
                 locationInLibraryBooksViewModel.Sector = locationInLibrary.Sector;
-                locationInLibraryBooksViewModel.Name = locationInLibrary.Name;
+                locationInLibraryBooksViewModel.Shelf = locationInLibrary.Shelf;
 
                 IQueryable<Book> locationInLibraryBooks = booksLibraryDataContext.Books.Where(x => x.IDLocationInLibrary == locationInLibraryID);
                 foreach(Book dbBook in locationInLibraryBooks)
