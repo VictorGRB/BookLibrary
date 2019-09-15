@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using BookLibrary.Models.DBObjects;
 
 namespace BookLibrary.Models
 {
@@ -21,5 +22,10 @@ namespace BookLibrary.Models
         public Guid IDBooksCategory { get; set; }
         public Guid IDLocationInLibrary { get; set; }
         public string imageUrl { get; set; }
+
+        public static implicit operator BookModel(BookLibraryModelsDataContext v)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

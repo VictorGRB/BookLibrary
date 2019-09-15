@@ -18,7 +18,7 @@ namespace BookLibrary.Controllers
         public ActionResult Index(string searchBy,string search)
         {
             List<Models.BookModel> books = bookRepository.GetAllBooks();
-            //return View("Index", books);
+            
             if (searchBy =="Name")
             {
                 return View(books.Where(x => x.Name.IndexOf (search,StringComparison.OrdinalIgnoreCase)>0 || search == null).ToList());
