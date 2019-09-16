@@ -1,4 +1,5 @@
 ﻿using BookLibrary.Models;
+using BookLibrary.Models.DBObjects;
 using BookLibrary.Repository;
 using System;
 using System.Collections.Generic;
@@ -11,13 +12,19 @@ namespace BookLibrary.Controllers
     
     public class BooksCategoryController : Controller
     {
+        private Models.DBObjects.BookLibraryModelsDataContext booksLibraryDataContext;
         private BookRepository booksRepository = new BookRepository();
         private Repository.BooksCategoryRepository booksCategoryRepository = new Repository.BooksCategoryRepository();
         // GET: BooksCategory
         public ActionResult Index()
         {
             List<Models.BooksCategoryModel> booksCategories = booksCategoryRepository.GetAllBookCategories();
-            return View("Index",booksCategories);
+            ////return View("Index",booksCategories);
+
+            //var bookcats = booksCategories.ToList();
+            //SelectList myList = new SelectList(bookcats, "Genre", "ChildAppropriate");
+            //ViewBag.getCategories = myList;
+            return View("Index", booksCategories);
         }
 
         // GET: BooksCategory/Details/5

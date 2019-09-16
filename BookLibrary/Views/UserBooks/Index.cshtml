@@ -11,11 +11,11 @@
     @Html.ActionLink("Create New", "Create")
 </p>*@
 
-<table class="table"style="background-color:darkgrey">
+<table class="table"style="background-color:darkgrey; align-content:center;align-items:center">
     @foreach(var item in Model)
     {
         <div>
-            <div style="background-color:darkgrey">
+            <div style="background-color:darkgrey; align-content:center;align-items:center">
                 <img src=" @Html.DisplayFor(modelItem => item.imageUrl)" /><br />
                 <b>@Html.DisplayFor(modelItem => item.Name)</b><br />
                 Author:@Html.DisplayFor(modelItem => item.Author)<br />

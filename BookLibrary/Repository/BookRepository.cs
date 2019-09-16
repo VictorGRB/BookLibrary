@@ -89,9 +89,10 @@ namespace BookLibrary.Repository
 
             //BookModel myBk = books
 
-            var myBook = booksLibraryDataContext.Books.FirstOrDefault(x => x.IDBook == ID);
-            myBook.NumberOfCopies--;
-            booksLibraryDataContext.SubmitChanges();
+            //var myBook = booksLibraryDataContext.Books.FirstOrDefault(x => x.IDBook == ID);
+            //myBook.NumberOfCopies--;
+            //booksLibraryDataContext.SubmitChanges();
+            
         }
         public void UpdateBook(BookModel bookModel)
         {
