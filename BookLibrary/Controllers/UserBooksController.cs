@@ -13,10 +13,23 @@ namespace BookLibrary.Controllers
     {
         private BookRepository bookRepository = new BookRepository();
         // GET: UserBooks
-        public ActionResult Index()
+        public ActionResult Index(string searchBy,string search)
         {
             List<BookModel> bookList = bookRepository.GetAllBooks();
-            return View("Index", bookList);
+            //return View("Index", bookList);
+            if (searchBy == "Name")
+            {
+                return View(bookList.Where(x => x.Name.IndexOf(search, StringComparison.OrdinalIgnoreCase) > 0 || search == null).ToList());
+            }
+            else if (searchBy == "Author")
+            {
+                return View(bookList.Where(x => x.Author.IndexOf(search, StringComparison.OrdinalIgnoreCase) > 0 || search == null).ToList());
+            }
+
+            else
+            {
+                return View("Index", bookList);
+            }
         }
 
         // GET: UserBooks/Details/5
