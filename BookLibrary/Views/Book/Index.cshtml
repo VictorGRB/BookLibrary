@@ -1,5 +1,6 @@
 ﻿@model IEnumerable<BookLibrary.Models.BookModel>
 
+
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -11,14 +12,14 @@
     @Html.ActionLink("Create New", "Create")
 </p>
 <p>
-    @using (Html.BeginForm("Index","Book",FormMethod.Get))
+    @using (Html.BeginForm("Index", "Book", FormMethod.Get))
     {
-    <b>Search By:</b> @Html.RadioButton("searchBy", "Name", true)<text>Name</text>
-    @Html.RadioButton("searchBy", "Author")<text>Author</text>
-    @Html.TextBox("search") <input type="submit" value="Search" />
+        <b>Search By:</b> @Html.RadioButton("searchBy", "Name", true)<text>Name</text>
+        @Html.RadioButton("searchBy", "Author")<text>Author</text>
+        @Html.TextBox("search") <input type="submit" value="Search" />
     }
 </p>
-<table class="table"  style="background-color:darkgrey" >
+<table class="table" style="background-color:darkgrey">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.IDBook)
@@ -44,55 +45,55 @@
         <th>
             @Html.DisplayNameFor(model => model.imageUrl)
         </th>
-        
+
         <th></th>
     </tr>
 
-@foreach (var item in Model)
-{
-<tr>
-    <td>
-        @Html.DisplayFor(modelItem => item.IDBook)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Name)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Author)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Publisher)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.NumberOfCopies)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.IDBooksCategory)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.IDLocationInLibrary)
-    </td>
-    <td>
-        <img src=" @Html.DisplayFor(modelItem => item.imageUrl)" height="30" />
-    </td>
-    <td>
-        @{ if (User.IsInRole("Admin"))
-            {
-                @Html.ActionLink("Edit", "Edit", new { id = item.IDBook })
-            } }
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.IDBook)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Author)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Publisher)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NumberOfCopies)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IDBooksCategory)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IDLocationInLibrary)
+            </td>
+            <td>
+                <img src=" @Html.DisplayFor(modelItem => item.imageUrl)" height="30" />
+            </td>
+            <td>
+                @{ if (User.IsInRole("Admin"))
+                    {
+                        @Html.ActionLink("Edit", "Edit", new { id = item.IDBook })
+                    } }
 
 
 
-        @Html.ActionLink("Details", "Details", new { id = item.IDBook })
+                @Html.ActionLink("Details", "Details", new { id = item.IDBook })
 
 
-        @{ if (User.IsInRole("Admin"))
-            {
-                @Html.ActionLink("Delete", "Delete", new { id = item.IDBook })
-            }
-        }
-    </td>
-</tr>
-}
+                @{ if (User.IsInRole("Admin"))
+                    {
+                        @Html.ActionLink("Delete", "Delete", new { id = item.IDBook })
+                    }
+                }
+            </td>
+        </tr>
+    }
 
 </table>
