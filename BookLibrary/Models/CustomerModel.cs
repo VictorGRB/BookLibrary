@@ -14,6 +14,7 @@ namespace BookLibrary.Models
         public string Name { get; set; }
         [Required(ErrorMessage = "Mandatory Field")]
         [StringLength(50, ErrorMessage = "Too many characters")]
+        [DataType(DataType.EmailAddress, ErrorMessage = "E-mail is not valid")]
         public string EmailAddress { get; set; }
         [Required(ErrorMessage = "Mandatory Field")]
         [StringLength(100, ErrorMessage = "Too many characters")]
