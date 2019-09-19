@@ -52,7 +52,8 @@ namespace BookLibrary.Controllers
                 Models.BorrowFormModel borrowFormModel = new Models.BorrowFormModel();
                 UpdateModel(borrowFormModel);
                 borrowFormRepository.InsertBorrowForm(borrowFormModel);
-                
+
+                bookRepository.DeductBook(borrowFormModel.IDBook);
                 
                 return RedirectToAction("Index");
             }

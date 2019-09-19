@@ -81,18 +81,23 @@ namespace BookLibrary.Repository
             booksLibraryDataContext.Books.InsertOnSubmit(MapModelToDbObject(bookModel));
             booksLibraryDataContext.SubmitChanges();
         }
-        public void DeductBook(Guid ID)
+        public void DeductBook(Guid IDbook)
         {
             //BookModel deduct = new BookModel();
             //deduct.NumberOfCopies--;
             //booksLibraryDataContext.SubmitChanges();
 
-            //BookModel myBk = books
 
             //var myBook = booksLibraryDataContext.Books.FirstOrDefault(x => x.IDBook == ID);
             //myBook.NumberOfCopies--;
             //booksLibraryDataContext.SubmitChanges();
-            
+
+            BookModel bookModel = GetBookByID(IDbook);
+            if (bookModel.NumberOfCopies > 0)
+            {
+                bookModel.NumberOfCopies--;
+                UpdateBook(bookModel);
+            }
         }
         public void UpdateBook(BookModel bookModel)
         {

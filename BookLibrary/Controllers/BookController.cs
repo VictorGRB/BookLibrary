@@ -21,11 +21,11 @@ namespace BookLibrary.Controllers
             
             if (searchBy =="Name")
             {
-                return View(books.Where(x => x.Name.IndexOf (search,StringComparison.OrdinalIgnoreCase)>0 || search == null).ToList());
+                return View(books.Where(x => x.Name.IndexOf (search,StringComparison.OrdinalIgnoreCase)>=0 || search == null).ToList());
             }
             else if(searchBy =="Author")
             {
-                return View(books.Where(x => x.Author.IndexOf (search, StringComparison.OrdinalIgnoreCase) > 0 || search == null).ToList());
+                return View(books.Where(x => x.Author.IndexOf (search, StringComparison.OrdinalIgnoreCase) >= 0 || search == null).ToList());
             }
             
             else
@@ -48,11 +48,11 @@ namespace BookLibrary.Controllers
         {
             var bookCategories = booksCategoryRepository.GetAllBookCategories();
             SelectList lst = new SelectList(bookCategories, "IDBooksCategory", "Genre");
-            ViewData["bookCategory"] = lst;
+            Session["bookCategory"] = lst;
 
             var locationsInLibrary = locationInLibraryRepository.GetAllLocationsInLibrary();
             SelectList locs = new SelectList(locationsInLibrary, "IDLocationInLibrary", "Name");
-            ViewData["locationInLibrary"] = locs;
+            Session["locationInLibrary"] = locs;
 
             return View("CreateBook");
         }
@@ -67,6 +67,13 @@ namespace BookLibrary.Controllers
                 Models.BookModel bookModel = new Models.BookModel();
                 UpdateModel(bookModel);
                 bookRepository.InsertBook(bookModel);
+                var bookCategories = booksCategoryRepository.GetAllBookCategories();
+                SelectList lst = new SelectList(bookCategories, "IDBooksCategory", "Genre");
+                Session["bookCategory"] = lst;
+                var locationsInLibrary = locationInLibraryRepository.GetAllLocationsInLibrary();
+                SelectList locs = new SelectList(locationsInLibrary, "IDLocationInLibrary", "Name");
+                Session["locationInLibrary"] = locs;
+                
                 return RedirectToAction("Index");
             }
             catch

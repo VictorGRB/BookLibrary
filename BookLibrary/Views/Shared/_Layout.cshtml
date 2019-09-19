@@ -20,7 +20,7 @@
                 @Html.ActionLink("Home Page", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse" style="color:black">
-                <ul class="nav navbar-nav" style="color:black" >
+                <ul class="nav navbar-nav"  >
                    
                     @{
                         if (User.IsInRole("Admin") || User.IsInRole("User"))

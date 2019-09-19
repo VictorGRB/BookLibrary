@@ -18,11 +18,11 @@ namespace BookLibrary.Controllers
             List<Models.CustomerModel> customers = customerRepository.GetAllCustomers();
             if (searchBy == "Name")
             {
-                return View(customers.Where(x => x.Name.IndexOf(search, StringComparison.OrdinalIgnoreCase) > 0 || search == null).ToList());
+                return View(customers.Where(x => x.Name.IndexOf(search, StringComparison.OrdinalIgnoreCase) >= 0 || search == null).ToList());
             }
             else if (searchBy == "EmailAddress")
             {
-                return View(customers.Where(x => x.EmailAddress.IndexOf(search, StringComparison.OrdinalIgnoreCase) > 0 || search == null).ToList());
+                return View(customers.Where(x => x.EmailAddress.IndexOf(search, StringComparison.OrdinalIgnoreCase) >= 0 || search == null).ToList());
             }
             else
             {

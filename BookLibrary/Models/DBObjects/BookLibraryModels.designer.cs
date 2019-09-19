@@ -324,7 +324,7 @@ namespace BookLibrary.Models.DBObjects
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_imageUrl", DbType="NVarChar(MAX)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_imageUrl", DbType="NVarChar(MAX) NOT NULL", CanBeNull=false)]
 		public string imageUrl
 		{
 			get
