@@ -53,7 +53,7 @@
       <Column Name="NumberOfCopies" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
       <Column Name="IDBooksCategory" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
       <Column Name="IDLocationInLibrary" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
-      <Column Name="imageUrl" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="imageUrl" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Association Name="Book_BorrowForm" Member="BorrowForms" ThisKey="IDBook" OtherKey="IDBook" Type="BorrowForm" />
       <Association Name="BooksCategory_Book" Member="BooksCategory" ThisKey="IDBooksCategory" OtherKey="IDBooksCategory" Type="BooksCategory" IsForeignKey="true" />
       <Association Name="LocationInLibrary_Book" Member="LocationInLibrary" ThisKey="IDLocationInLibrary" OtherKey="IDLocationInLibrary" Type="LocationInLibrary" IsForeignKey="true" />
