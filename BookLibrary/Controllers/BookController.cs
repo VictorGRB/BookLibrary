@@ -64,7 +64,7 @@ namespace BookLibrary.Controllers
             try
             {
                 // TODO: Add insert logic here
-                Models.BookModel bookModel = new Models.BookModel();
+                BookModel bookModel = new Models.BookModel();
                 UpdateModel(bookModel);
                 bookRepository.InsertBook(bookModel);
                 var bookCategories = booksCategoryRepository.GetAllBookCategories();
@@ -73,7 +73,7 @@ namespace BookLibrary.Controllers
                 var locationsInLibrary = locationInLibraryRepository.GetAllLocationsInLibrary();
                 SelectList locs = new SelectList(locationsInLibrary, "IDLocationInLibrary", "Name");
                 Session["locationInLibrary"] = locs;
-                
+
                 return RedirectToAction("Index");
             }
             catch

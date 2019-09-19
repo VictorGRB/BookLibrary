@@ -30,9 +30,6 @@ namespace BookLibrary.Models.DBObjects
 		
     #region Extensibility Method Definitions
     partial void OnCreated();
-    partial void InsertBook(Book instance);
-    partial void UpdateBook(Book instance);
-    partial void DeleteBook(Book instance);
     partial void InsertBooksCategory(BooksCategory instance);
     partial void UpdateBooksCategory(BooksCategory instance);
     partial void DeleteBooksCategory(BooksCategory instance);
@@ -45,6 +42,9 @@ namespace BookLibrary.Models.DBObjects
     partial void InsertLocationInLibrary(LocationInLibrary instance);
     partial void UpdateLocationInLibrary(LocationInLibrary instance);
     partial void DeleteLocationInLibrary(LocationInLibrary instance);
+    partial void InsertBook(Book instance);
+    partial void UpdateBook(Book instance);
+    partial void DeleteBook(Book instance);
     #endregion
 		
 		public BookLibraryModelsDataContext() : 
@@ -75,14 +75,6 @@ namespace BookLibrary.Models.DBObjects
 				base(connection, mappingSource)
 		{
 			OnCreated();
-		}
-		
-		public System.Data.Linq.Table<Book> Books
-		{
-			get
-			{
-				return this.GetTable<Book>();
-			}
 		}
 		
 		public System.Data.Linq.Table<BooksCategory> BooksCategories
@@ -116,345 +108,13 @@ namespace BookLibrary.Models.DBObjects
 				return this.GetTable<LocationInLibrary>();
 			}
 		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Books")]
-	public partial class Book : INotifyPropertyChanging, INotifyPropertyChanged
-	{
 		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private System.Guid _IDBook;
-		
-		private string _Name;
-		
-		private string _Author;
-		
-		private string _Publisher;
-		
-		private int _NumberOfCopies;
-		
-		private System.Guid _IDBooksCategory;
-		
-		private System.Guid _IDLocationInLibrary;
-		
-		private string _imageUrl;
-		
-		private EntitySet<BorrowForm> _BorrowForms;
-		
-		private EntityRef<BooksCategory> _BooksCategory;
-		
-		private EntityRef<LocationInLibrary> _LocationInLibrary;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnIDBookChanging(System.Guid value);
-    partial void OnIDBookChanged();
-    partial void OnNameChanging(string value);
-    partial void OnNameChanged();
-    partial void OnAuthorChanging(string value);
-    partial void OnAuthorChanged();
-    partial void OnPublisherChanging(string value);
-    partial void OnPublisherChanged();
-    partial void OnNumberOfCopiesChanging(decimal value);
-    partial void OnNumberOfCopiesChanged();
-    partial void OnIDBooksCategoryChanging(System.Guid value);
-    partial void OnIDBooksCategoryChanged();
-    partial void OnIDLocationInLibraryChanging(System.Guid value);
-    partial void OnIDLocationInLibraryChanged();
-    partial void OnimageUrlChanging(string value);
-    partial void OnimageUrlChanged();
-    #endregion
-		
-		public Book()
-		{
-			this._BorrowForms = new EntitySet<BorrowForm>(new Action<BorrowForm>(this.attach_BorrowForms), new Action<BorrowForm>(this.detach_BorrowForms));
-			this._BooksCategory = default(EntityRef<BooksCategory>);
-			this._LocationInLibrary = default(EntityRef<LocationInLibrary>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IDBook", DbType="UniqueIdentifier NOT NULL", IsPrimaryKey=true)]
-		public System.Guid IDBook
+		public System.Data.Linq.Table<Book> Books
 		{
 			get
 			{
-				return this._IDBook;
+				return this.GetTable<Book>();
 			}
-			set
-			{
-				if ((this._IDBook != value))
-				{
-					this.OnIDBookChanging(value);
-					this.SendPropertyChanging();
-					this._IDBook = value;
-					this.SendPropertyChanged("IDBook");
-					this.OnIDBookChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="VarChar(100) NOT NULL", CanBeNull=false)]
-		public string Name
-		{
-			get
-			{
-				return this._Name;
-			}
-			set
-			{
-				if ((this._Name != value))
-				{
-					this.OnNameChanging(value);
-					this.SendPropertyChanging();
-					this._Name = value;
-					this.SendPropertyChanged("Name");
-					this.OnNameChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Author", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string Author
-		{
-			get
-			{
-				return this._Author;
-			}
-			set
-			{
-				if ((this._Author != value))
-				{
-					this.OnAuthorChanging(value);
-					this.SendPropertyChanging();
-					this._Author = value;
-					this.SendPropertyChanged("Author");
-					this.OnAuthorChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Publisher", DbType="VarChar(100) NOT NULL", CanBeNull=false)]
-		public string Publisher
-		{
-			get
-			{
-				return this._Publisher;
-			}
-			set
-			{
-				if ((this._Publisher != value))
-				{
-					this.OnPublisherChanging(value);
-					this.SendPropertyChanging();
-					this._Publisher = value;
-					this.SendPropertyChanged("Publisher");
-					this.OnPublisherChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NumberOfCopies", DbType="Decimal(18,0) NOT NULL")]
-		public int NumberOfCopies
-		{
-			get
-			{
-				return this._NumberOfCopies;
-			}
-			set
-			{
-				if ((this._NumberOfCopies != value))
-				{
-					this.OnNumberOfCopiesChanging(value);
-					this.SendPropertyChanging();
-					this._NumberOfCopies = value;
-					this.SendPropertyChanged("NumberOfCopies");
-					this.OnNumberOfCopiesChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IDBooksCategory", DbType="UniqueIdentifier NOT NULL")]
-		public System.Guid IDBooksCategory
-		{
-			get
-			{
-				return this._IDBooksCategory;
-			}
-			set
-			{
-				if ((this._IDBooksCategory != value))
-				{
-					if (this._BooksCategory.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnIDBooksCategoryChanging(value);
-					this.SendPropertyChanging();
-					this._IDBooksCategory = value;
-					this.SendPropertyChanged("IDBooksCategory");
-					this.OnIDBooksCategoryChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IDLocationInLibrary", DbType="UniqueIdentifier NOT NULL")]
-		public System.Guid IDLocationInLibrary
-		{
-			get
-			{
-				return this._IDLocationInLibrary;
-			}
-			set
-			{
-				if ((this._IDLocationInLibrary != value))
-				{
-					if (this._LocationInLibrary.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnIDLocationInLibraryChanging(value);
-					this.SendPropertyChanging();
-					this._IDLocationInLibrary = value;
-					this.SendPropertyChanged("IDLocationInLibrary");
-					this.OnIDLocationInLibraryChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_imageUrl", DbType="NVarChar(MAX) NOT NULL", CanBeNull=false)]
-		public string imageUrl
-		{
-			get
-			{
-				return this._imageUrl;
-			}
-			set
-			{
-				if ((this._imageUrl != value))
-				{
-					this.OnimageUrlChanging(value);
-					this.SendPropertyChanging();
-					this._imageUrl = value;
-					this.SendPropertyChanged("imageUrl");
-					this.OnimageUrlChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Book_BorrowForm", Storage="_BorrowForms", ThisKey="IDBook", OtherKey="IDBook")]
-		public EntitySet<BorrowForm> BorrowForms
-		{
-			get
-			{
-				return this._BorrowForms;
-			}
-			set
-			{
-				this._BorrowForms.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="BooksCategory_Book", Storage="_BooksCategory", ThisKey="IDBooksCategory", OtherKey="IDBooksCategory", IsForeignKey=true)]
-		public BooksCategory BooksCategory
-		{
-			get
-			{
-				return this._BooksCategory.Entity;
-			}
-			set
-			{
-				BooksCategory previousValue = this._BooksCategory.Entity;
-				if (((previousValue != value) 
-							|| (this._BooksCategory.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._BooksCategory.Entity = null;
-						previousValue.Books.Remove(this);
-					}
-					this._BooksCategory.Entity = value;
-					if ((value != null))
-					{
-						value.Books.Add(this);
-						this._IDBooksCategory = value.IDBooksCategory;
-					}
-					else
-					{
-						this._IDBooksCategory = default(System.Guid);
-					}
-					this.SendPropertyChanged("BooksCategory");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="LocationInLibrary_Book", Storage="_LocationInLibrary", ThisKey="IDLocationInLibrary", OtherKey="IDLocationInLibrary", IsForeignKey=true)]
-		public LocationInLibrary LocationInLibrary
-		{
-			get
-			{
-				return this._LocationInLibrary.Entity;
-			}
-			set
-			{
-				LocationInLibrary previousValue = this._LocationInLibrary.Entity;
-				if (((previousValue != value) 
-							|| (this._LocationInLibrary.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._LocationInLibrary.Entity = null;
-						previousValue.Books.Remove(this);
-					}
-					this._LocationInLibrary.Entity = value;
-					if ((value != null))
-					{
-						value.Books.Add(this);
-						this._IDLocationInLibrary = value.IDLocationInLibrary;
-					}
-					else
-					{
-						this._IDLocationInLibrary = default(System.Guid);
-					}
-					this.SendPropertyChanged("LocationInLibrary");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_BorrowForms(BorrowForm entity)
-		{
-			this.SendPropertyChanging();
-			entity.Book = this;
-		}
-		
-		private void detach_BorrowForms(BorrowForm entity)
-		{
-			this.SendPropertyChanging();
-			entity.Book = null;
 		}
 	}
 	
@@ -616,9 +276,9 @@ namespace BookLibrary.Models.DBObjects
 		
 		private bool _ProperConditionsReturn;
 		
-		private EntityRef<Book> _Book;
-		
 		private EntityRef<Customer> _Customer;
+		
+		private EntityRef<Book> _Book;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -642,8 +302,8 @@ namespace BookLibrary.Models.DBObjects
 		
 		public BorrowForm()
 		{
-			this._Book = default(EntityRef<Book>);
 			this._Customer = default(EntityRef<Customer>);
+			this._Book = default(EntityRef<Book>);
 			OnCreated();
 		}
 		
@@ -795,40 +455,6 @@ namespace BookLibrary.Models.DBObjects
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Book_BorrowForm", Storage="_Book", ThisKey="IDBook", OtherKey="IDBook", IsForeignKey=true)]
-		public Book Book
-		{
-			get
-			{
-				return this._Book.Entity;
-			}
-			set
-			{
-				Book previousValue = this._Book.Entity;
-				if (((previousValue != value) 
-							|| (this._Book.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Book.Entity = null;
-						previousValue.BorrowForms.Remove(this);
-					}
-					this._Book.Entity = value;
-					if ((value != null))
-					{
-						value.BorrowForms.Add(this);
-						this._IDBook = value.IDBook;
-					}
-					else
-					{
-						this._IDBook = default(System.Guid);
-					}
-					this.SendPropertyChanged("Book");
-				}
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Customer_BorrowForm", Storage="_Customer", ThisKey="IDCustomer", OtherKey="IDCustomer", IsForeignKey=true)]
 		public Customer Customer
 		{
@@ -859,6 +485,40 @@ namespace BookLibrary.Models.DBObjects
 						this._IDCustomer = default(System.Guid);
 					}
 					this.SendPropertyChanged("Customer");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Book_BorrowForm", Storage="_Book", ThisKey="IDBook", OtherKey="IDBook", IsForeignKey=true)]
+		public Book Book
+		{
+			get
+			{
+				return this._Book.Entity;
+			}
+			set
+			{
+				Book previousValue = this._Book.Entity;
+				if (((previousValue != value) 
+							|| (this._Book.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Book.Entity = null;
+						previousValue.BorrowForms.Remove(this);
+					}
+					this._Book.Entity = value;
+					if ((value != null))
+					{
+						value.BorrowForms.Add(this);
+						this._IDBook = value.IDBook;
+					}
+					else
+					{
+						this._IDBook = default(System.Guid);
+					}
+					this.SendPropertyChanged("Book");
 				}
 			}
 		}
@@ -1325,6 +985,346 @@ namespace BookLibrary.Models.DBObjects
 		{
 			this.SendPropertyChanging();
 			entity.LocationInLibrary = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Books")]
+	public partial class Book : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private System.Guid _IDBook;
+		
+		private string _Name;
+		
+		private string _Author;
+		
+		private string _Publisher;
+		
+		private int _NumberOfCopies;
+		
+		private System.Guid _IDBooksCategory;
+		
+		private System.Guid _IDLocationInLibrary;
+		
+		private string _imageUrl;
+		
+		private EntitySet<BorrowForm> _BorrowForms;
+		
+		private EntityRef<BooksCategory> _BooksCategory;
+		
+		private EntityRef<LocationInLibrary> _LocationInLibrary;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIDBookChanging(System.Guid value);
+    partial void OnIDBookChanged();
+    partial void OnNameChanging(string value);
+    partial void OnNameChanged();
+    partial void OnAuthorChanging(string value);
+    partial void OnAuthorChanged();
+    partial void OnPublisherChanging(string value);
+    partial void OnPublisherChanged();
+    partial void OnNumberOfCopiesChanging(decimal value);
+    partial void OnNumberOfCopiesChanged();
+    partial void OnIDBooksCategoryChanging(System.Guid value);
+    partial void OnIDBooksCategoryChanged();
+    partial void OnIDLocationInLibraryChanging(System.Guid value);
+    partial void OnIDLocationInLibraryChanged();
+    partial void OnimageUrlChanging(string value);
+    partial void OnimageUrlChanged();
+    #endregion
+		
+		public Book()
+		{
+			this._BorrowForms = new EntitySet<BorrowForm>(new Action<BorrowForm>(this.attach_BorrowForms), new Action<BorrowForm>(this.detach_BorrowForms));
+			this._BooksCategory = default(EntityRef<BooksCategory>);
+			this._LocationInLibrary = default(EntityRef<LocationInLibrary>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IDBook", DbType="UniqueIdentifier NOT NULL", IsPrimaryKey=true)]
+		public System.Guid IDBook
+		{
+			get
+			{
+				return this._IDBook;
+			}
+			set
+			{
+				if ((this._IDBook != value))
+				{
+					this.OnIDBookChanging(value);
+					this.SendPropertyChanging();
+					this._IDBook = value;
+					this.SendPropertyChanged("IDBook");
+					this.OnIDBookChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="VarChar(100) NOT NULL", CanBeNull=false)]
+		public string Name
+		{
+			get
+			{
+				return this._Name;
+			}
+			set
+			{
+				if ((this._Name != value))
+				{
+					this.OnNameChanging(value);
+					this.SendPropertyChanging();
+					this._Name = value;
+					this.SendPropertyChanged("Name");
+					this.OnNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Author", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string Author
+		{
+			get
+			{
+				return this._Author;
+			}
+			set
+			{
+				if ((this._Author != value))
+				{
+					this.OnAuthorChanging(value);
+					this.SendPropertyChanging();
+					this._Author = value;
+					this.SendPropertyChanged("Author");
+					this.OnAuthorChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Publisher", DbType="VarChar(100) NOT NULL", CanBeNull=false)]
+		public string Publisher
+		{
+			get
+			{
+				return this._Publisher;
+			}
+			set
+			{
+				if ((this._Publisher != value))
+				{
+					this.OnPublisherChanging(value);
+					this.SendPropertyChanging();
+					this._Publisher = value;
+					this.SendPropertyChanged("Publisher");
+					this.OnPublisherChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NumberOfCopies", DbType="Decimal(18,0) NOT NULL")]
+		public int NumberOfCopies
+		{
+			get
+			{
+				return this._NumberOfCopies;
+			}
+			set
+			{
+				if ((this._NumberOfCopies != value))
+				{
+					this.OnNumberOfCopiesChanging(value);
+					this.SendPropertyChanging();
+					this._NumberOfCopies = value;
+					this.SendPropertyChanged("NumberOfCopies");
+					this.OnNumberOfCopiesChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IDBooksCategory", DbType="UniqueIdentifier NOT NULL")]
+		public System.Guid IDBooksCategory
+		{
+			get
+			{
+				return this._IDBooksCategory;
+			}
+			set
+			{
+				if ((this._IDBooksCategory != value))
+				{
+					if (this._BooksCategory.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnIDBooksCategoryChanging(value);
+					this.SendPropertyChanging();
+					this._IDBooksCategory = value;
+					this.SendPropertyChanged("IDBooksCategory");
+					this.OnIDBooksCategoryChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IDLocationInLibrary", DbType="UniqueIdentifier NOT NULL")]
+		public System.Guid IDLocationInLibrary
+		{
+			get
+			{
+				return this._IDLocationInLibrary;
+			}
+			set
+			{
+				if ((this._IDLocationInLibrary != value))
+				{
+					if (this._LocationInLibrary.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnIDLocationInLibraryChanging(value);
+					this.SendPropertyChanging();
+					this._IDLocationInLibrary = value;
+					this.SendPropertyChanged("IDLocationInLibrary");
+					this.OnIDLocationInLibraryChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_imageUrl", DbType="NVarChar(MAX) NOT NULL", CanBeNull=false)]
+		public string imageUrl
+		{
+			get
+			{
+				return this._imageUrl;
+			}
+			set
+			{
+				if ((this._imageUrl != value))
+				{
+					this.OnimageUrlChanging(value);
+					this.SendPropertyChanging();
+					this._imageUrl = value;
+					this.SendPropertyChanged("imageUrl");
+					this.OnimageUrlChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Book_BorrowForm", Storage="_BorrowForms", ThisKey="IDBook", OtherKey="IDBook")]
+		public EntitySet<BorrowForm> BorrowForms
+		{
+			get
+			{
+				return this._BorrowForms;
+			}
+			set
+			{
+				this._BorrowForms.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="BooksCategory_Book", Storage="_BooksCategory", ThisKey="IDBooksCategory", OtherKey="IDBooksCategory", IsForeignKey=true)]
+		public BooksCategory BooksCategory
+		{
+			get
+			{
+				return this._BooksCategory.Entity;
+			}
+			set
+			{
+				BooksCategory previousValue = this._BooksCategory.Entity;
+				if (((previousValue != value) 
+							|| (this._BooksCategory.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._BooksCategory.Entity = null;
+						previousValue.Books.Remove(this);
+					}
+					this._BooksCategory.Entity = value;
+					if ((value != null))
+					{
+						value.Books.Add(this);
+						this._IDBooksCategory = value.IDBooksCategory;
+					}
+					else
+					{
+						this._IDBooksCategory = default(System.Guid);
+					}
+					this.SendPropertyChanged("BooksCategory");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="LocationInLibrary_Book", Storage="_LocationInLibrary", ThisKey="IDLocationInLibrary", OtherKey="IDLocationInLibrary", IsForeignKey=true)]
+		public LocationInLibrary LocationInLibrary
+		{
+			get
+			{
+				return this._LocationInLibrary.Entity;
+			}
+			set
+			{
+				LocationInLibrary previousValue = this._LocationInLibrary.Entity;
+				if (((previousValue != value) 
+							|| (this._LocationInLibrary.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._LocationInLibrary.Entity = null;
+						previousValue.Books.Remove(this);
+					}
+					this._LocationInLibrary.Entity = value;
+					if ((value != null))
+					{
+						value.Books.Add(this);
+						this._IDLocationInLibrary = value.IDLocationInLibrary;
+					}
+					else
+					{
+						this._IDLocationInLibrary = default(System.Guid);
+					}
+					this.SendPropertyChanged("LocationInLibrary");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_BorrowForms(BorrowForm entity)
+		{
+			this.SendPropertyChanging();
+			entity.Book = this;
+		}
+		
+		private void detach_BorrowForms(BorrowForm entity)
+		{
+			this.SendPropertyChanging();
+			entity.Book = null;
 		}
 	}
 }

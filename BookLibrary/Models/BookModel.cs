@@ -10,7 +10,7 @@ namespace BookLibrary.Models
     public class BookModel
     {
         public Guid IDBook { get; set; }
-        [Required(ErrorMessage ="Mandatory Field")]
+        [Required(ErrorMessage = "Mandatory Field")]
         public string Name { get; set; }
         [Required(ErrorMessage = "Mandatory Field")]
         public string Author { get; set; }

@@ -83,15 +83,6 @@ namespace BookLibrary.Repository
         }
         public void DeductBook(Guid IDbook)
         {
-            //BookModel deduct = new BookModel();
-            //deduct.NumberOfCopies--;
-            //booksLibraryDataContext.SubmitChanges();
-
-
-            //var myBook = booksLibraryDataContext.Books.FirstOrDefault(x => x.IDBook == ID);
-            //myBook.NumberOfCopies--;
-            //booksLibraryDataContext.SubmitChanges();
-
             BookModel bookModel = GetBookByID(IDbook);
             if (bookModel.NumberOfCopies > 0)
             {
