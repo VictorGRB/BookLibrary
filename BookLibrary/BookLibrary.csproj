@@ -220,6 +220,7 @@
       <DependentUpon>SendMail.aspx</DependentUpon>
     </Compile>
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\BookViewModel.cs" />
     <Compile Include="ViewModels\LocationInLibraryBooksViewModel.cs" />
   </ItemGroup>
   <ItemGroup>

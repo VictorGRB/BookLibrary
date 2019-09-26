@@ -1,16 +1,16 @@
-﻿@model BookLibrary.Models.BookModel
+﻿@model BookLibrary.ViewModels.BookViewModel
 
 @{
-    ViewBag.Title = "BookDetails";
+    ViewBag.Title = "Details";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>BookDetails</h2>
-
+<h2>Details</h2>
+@*@foreach (var item in Model.BooksCategories)*@
 <div>
-    <h4>BookModel</h4>
+    <h4>BookViewModel</h4>
     <hr />
-    <dl class="dl-horizontal"style="background-color:darkgrey">
+    <dl class="dl-horizontal">
         <dt>
             @Html.DisplayNameFor(model => model.IDBook)
         </dt>
@@ -64,12 +64,30 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.IDLocationInLibrary)
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.imageUrl)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.imageUrl)
         </dd>
 
     </dl>
 </div>
+@foreach (var item in Model.BooksCategories)
+{
+    <div style="background-color:darkgrey;border:solid">
+        <p>
+            Name: @Html.DisplayFor(modelItem => item.Genre)
+        </p>
+        </div>
+}
+
+
 <p>
-    @Html.ActionLink("Edit", "Edit", new {  id = Model.IDBook  }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+
+            @Html.ActionLink("Back to List", "Index")
+        </p>

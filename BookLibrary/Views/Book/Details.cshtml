@@ -1,4 +1,4 @@
-﻿@model BookLibrary.ViewModels.BookLocationInLibraryViewModel
+﻿@model BookLibrary.ViewModels.BookViewModel
 
 @{
     ViewBag.Title = "Details";
@@ -6,11 +6,19 @@
 }
 
 <h2>Details</h2>
-
+@*@foreach (var item in Model.BooksCategories)*@
 <div>
-    <h4>BookLocationInLibraryViewModel</h4>
+    <h4>BookViewModel</h4>
     <hr />
-    <dl class="dl-horizontal"style="background-color:darkgrey">
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.IDBook)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IDBook)
+        </dd>
+
         <dt>
             @Html.DisplayNameFor(model => model.Name)
         </dt>
@@ -51,23 +59,34 @@
             @Html.DisplayFor(model => model.IDBooksCategory)
         </dd>
 
+        <dt>
+            @Html.DisplayNameFor(model => model.IDLocationInLibrary)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IDLocationInLibrary)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.imageUrl)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.imageUrl)
+        </dd>
+
     </dl>
 </div>
-@foreach(var item in Model.LocationsInLIbrary)
-{<div>
-    <p>
-        @Html.DisplayFor(modelItem => item.Floor)
-    </p>
-    <p>
-        @Html.DisplayFor(modelItem => item.Sector)
-    </p>
-    <p>
-        @Html.DisplayFor(modelItem => item.Shelf)
-    </p>
+@foreach (var item in Model.BooksCategories)
+{
+    <div style="background-color:darkgrey;border:solid">
+        <p>
+            Genre: @Html.DisplayFor(modelItem => item.Genre)
+        </p>
+    </div>
+}
 
-
-</div>
- }
 <p>
-    @Html.ActionLink("Back to List","Index")
+
+    @Html.ActionLink("Back to List", "Index")
 </p>

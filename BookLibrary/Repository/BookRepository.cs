@@ -1,5 +1,6 @@
 ﻿using BookLibrary.Models;
 using BookLibrary.Models.DBObjects;
+using BookLibrary.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,9 +19,36 @@ namespace BookLibrary.Repository
         {
             this.booksLibraryDataContext = booksLibraryDataContext;
         }
-       
+        public BookViewModel GetBookView(Guid bookID)
+        {
+            BookViewModel bookViewModel = new BookViewModel();
+            Book book = booksLibraryDataContext.Books.FirstOrDefault(x => x.IDBook == bookID);
+            if (book != null)
+            {
+                bookViewModel.IDBook = book.IDBook;
+                bookViewModel.Name = book.Name;
+                bookViewModel.Author = book.Author;
+                bookViewModel.Publisher = book.Publisher;
+                bookViewModel.NumberOfCopies = book.NumberOfCopies;
+                bookViewModel.IDBooksCategory = book.IDBooksCategory;
+                bookViewModel.IDLocationInLibrary = book.IDLocationInLibrary;
+                bookViewModel.imageUrl = book.imageUrl;
+                IQueryable<BooksCategory> booksCategories = booksLibraryDataContext.BooksCategories.Where(x => x.IDBooksCategory == bookID);
+                foreach (BooksCategory dbBooksCategory in booksCategories)
+                {
+                    Models.BooksCategoryModel booksCategoryModel = new Models.BooksCategoryModel();
+                    booksCategoryModel.Genre = dbBooksCategory.Genre;
 
-        public List<BookModel>GetAllBooksByBooksCategory(Guid id)
+                    bookViewModel.BooksCategories.Add(booksCategoryModel);
+                }
+            }
+            return bookViewModel;
+        }
+
+
+
+
+            public List<BookModel>GetAllBooksByBooksCategory(Guid id)
         {
             List<BookModel> booksList = new List<BookModel>();
             List<Book> book = booksLibraryDataContext.Books.Where(x => x.IDBooksCategory == id).ToList();
@@ -87,6 +115,15 @@ namespace BookLibrary.Repository
             if (bookModel.NumberOfCopies > 0)
             {
                 bookModel.NumberOfCopies--;
+                UpdateBook(bookModel);
+            }
+        }
+        public void AddBook(Guid IDbook)
+        {
+            BookModel bookModel = GetBookByID(IDbook);
+            if (bookModel.NumberOfCopies < 10)
+            {
+                bookModel.NumberOfCopies++;
                 UpdateBook(bookModel);
             }
         }

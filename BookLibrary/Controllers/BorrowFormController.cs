@@ -20,12 +20,19 @@ namespace BookLibrary.Controllers
             List<Models.BorrowFormModel> borrowForms = borrowFormRepository.GetAllBorrowForms();
             return View("Index",borrowForms);
         }
+        //public ActionResult AddBook(Guid ID)
+        //{
+        //    Models.BorrowFormModel borrowFormModel = borrowFormRepository.GetBorrowFormByID(ID);
+        //    bookRepository.AddBook(borrowFormModel.IDBook);
+        //    return View();
+        //}
 
         // GET: BorrowForm/Details/5
         public ActionResult Details(Guid id)
         {
-            //bookRepository.DeductBook(id);
+            
             Models.BorrowFormModel borrowFormModel = borrowFormRepository.GetBorrowFormByID(id);
+            
             return View("BorrowFormDetails",borrowFormModel);
         }
         [Authorize(Roles = "Admin")]
@@ -95,6 +102,7 @@ namespace BookLibrary.Controllers
         public ActionResult Delete(Guid id)
         {
             Models.BorrowFormModel borrowFormModel = borrowFormRepository.GetBorrowFormByID(id);
+            //bookRepository.AddBook(borrowFormModel.IDBook);
             return View("DeleteBorrowForm",borrowFormModel);
         }
         [Authorize(Roles = "Admin")]
@@ -104,8 +112,11 @@ namespace BookLibrary.Controllers
         {
             try
             {
+                Models.BorrowFormModel borrowFormModel = borrowFormRepository.GetBorrowFormByID(id);
+
                 // TODO: Add delete logic here
                 borrowFormRepository.DeleteBorrowForm(id);
+                bookRepository.AddBook(borrowFormModel.IDBook);
                 return RedirectToAction("Index");
             }
             catch

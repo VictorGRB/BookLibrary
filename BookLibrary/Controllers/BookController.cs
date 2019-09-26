@@ -1,5 +1,6 @@
 ﻿using BookLibrary.Models;
 using BookLibrary.Repository;
+using BookLibrary.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -38,8 +39,10 @@ namespace BookLibrary.Controllers
         // GET: Book/Details/5
         public ActionResult Details(Guid id)
         {
-            Models.BookModel bookModel = bookRepository.GetBookByID(id);
-            return View("BookDetails", bookModel);
+            //Models.BookModel bookModel = bookRepository.GetBookByID(id);
+            //return View("BookDetails", bookModel);
+            BookViewModel viewModel = bookRepository.GetBookView(id);
+            return View(viewModel);
 
         }
         [Authorize(Roles = "Admin")]
