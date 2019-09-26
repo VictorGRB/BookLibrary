@@ -1,0 +1,51 @@
+﻿@model BookLibrary.ViewModels.BooksCategoryBooksViewModel
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    @*<h4>BooksCategoryBooksViewModel</h4>*@
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Genre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Genre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ChildAppropriate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ChildAppropriate)
+        </dd>
+
+    </dl>
+</div>
+@foreach (var item in Model.Books)
+{
+    <div style="background-color:darkgrey;border:solid">
+        <p>
+            Name: @Html.DisplayFor(modelItem => item.Name)
+        </p>
+        <p>
+            Author: @Html.DisplayFor(modelItem => item.Author)
+        </p>
+        <p>
+            Publisher: @Html.DisplayFor(modelItem => item.Publisher)
+        </p>
+        <p>
+            Copies: @Html.DisplayFor(modelItem => item.NumberOfCopies)
+        </p>
+    </div>}
+    <p>
+        
+        @Html.ActionLink("Back to List", "Index")
+    </p>

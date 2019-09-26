@@ -19,6 +19,11 @@ namespace BookLibrary.Repository
         {
             this.booksLibraryDataContext = booksLibraryDataContext;
         }
+        //public BooksCategoryBooksViewModel GetBooksCategoryBooks(Guid ID)
+        //{
+        //    BooksCategoryBooksViewModel booksCategoryBooksViewModel = new BooksCategoryBooksViewModel();
+
+        //}
         public BookViewModel GetBookView(Guid bookID)
         {
             BookViewModel bookViewModel = new BookViewModel();

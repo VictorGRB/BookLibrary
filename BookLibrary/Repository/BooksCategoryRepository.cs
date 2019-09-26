@@ -1,4 +1,6 @@
 ﻿using BookLibrary.Models;
+using BookLibrary.Models.DBObjects;
+using BookLibrary.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,6 +18,32 @@ namespace BookLibrary.Repository
         public BooksCategoryRepository(Models.DBObjects.BookLibraryModelsDataContext booksLibraryDataContext)
         {
             this.booksLibraryDataContext = booksLibraryDataContext;
+        }
+        public BooksCategoryBooksViewModel GetBooksCategoryBooks(Guid booksCatID)
+        {
+            BooksCategoryBooksViewModel booksCategoryBooksViewModel = new BooksCategoryBooksViewModel();
+            BooksCategory booksCategory = booksLibraryDataContext.BooksCategories.FirstOrDefault(x => x.IDBooksCategory == booksCatID);
+            if (booksCategory != null)
+            {
+                booksCategoryBooksViewModel.Genre = booksCategory.Genre;
+                booksCategoryBooksViewModel.ChildAppropriate = booksCategory.ChildAppropriate;
+                IQueryable<Book> catBooks = booksLibraryDataContext.Books.Where(x => x.IDBooksCategory == booksCatID);
+
+                foreach(Book dbBook in catBooks)
+                {
+                    Models.BookModel bookModel = new Models.BookModel();
+
+                    bookModel.Name = dbBook.Name;
+                    bookModel.Author = dbBook.Author;
+                    bookModel.Publisher = dbBook.Publisher;
+                    bookModel.NumberOfCopies = dbBook.NumberOfCopies;
+                    bookModel.imageUrl = dbBook.imageUrl;
+
+                    booksCategoryBooksViewModel.Books.Add(bookModel);
+                }
+            }
+            return booksCategoryBooksViewModel;
+
         }
         public List<BooksCategoryModel> GetAllBookCategories()
         {

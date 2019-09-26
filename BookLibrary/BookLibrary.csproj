@@ -220,6 +220,7 @@
       <DependentUpon>SendMail.aspx</DependentUpon>
     </Compile>
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\BooksCategoryBooksViewModel.cs" />
     <Compile Include="ViewModels\BookViewModel.cs" />
     <Compile Include="ViewModels\LocationInLibraryBooksViewModel.cs" />
   </ItemGroup>
@@ -320,6 +321,7 @@
     <Content Include="Views\Book\Details.cshtml" />
     <Content Include="Views\LocationInLibrary\Details.cshtml" />
     <Content Include="Views\UserBooks\Index.cshtml" />
+    <Content Include="Views\BooksCategory\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
