@@ -19,11 +19,11 @@ namespace BookLibrary.Controllers
             //return View("Index", bookList);
             if (searchBy == "Name")
             {
-                return View(bookList.Where(x => x.Name.IndexOf(search, StringComparison.OrdinalIgnoreCase) > 0 || search == null).ToList());
+                return View(bookList.Where(x => x.Name.IndexOf(search, StringComparison.OrdinalIgnoreCase) >=0 || search == null).ToList());
             }
             else if (searchBy == "Author")
             {
-                return View(bookList.Where(x => x.Author.IndexOf(search, StringComparison.OrdinalIgnoreCase) > 0 || search == null).ToList());
+                return View(bookList.Where(x => x.Author.IndexOf(search, StringComparison.OrdinalIgnoreCase) >=0 || search == null).ToList());
             }
 
             else

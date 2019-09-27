@@ -21,8 +21,8 @@
 <table class="table" style="background-color:darkgrey">
     <tr>
         @*<th>
-            @Html.DisplayNameFor(model => model.IDCustomer)
-        </th>*@
+                @Html.DisplayNameFor(model => model.IDCustomer)
+            </th>*@
         <th>
             @Html.DisplayNameFor(model => model.Name)
         </th>
@@ -46,51 +46,57 @@
         </th>
         <th></th>
     </tr>
+    @if (Model.Count() == 0)
+    {
+        <tr>
+            <td>No such criteria. Please try again</td>
+        </tr>
+    }
+    @foreach (var item in Model)
+    {
+        <tr>
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.IDCustomer)
+                </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EmailAddress)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Address)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PhoneNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CustomerSince)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BooksReturnedOnTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MonthlyFeePayed)
+            </td>
+            <td>
+                @{ if (User.IsInRole("Admin"))
+                    {
+                        @Html.ActionLink("Edit", "Edit", new { id = item.IDCustomer })
+                    } }
 
-@foreach (var item in Model) {
-    <tr>
-        @*<td>
-            @Html.DisplayFor(modelItem => item.IDCustomer)
-        </td>*@
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.EmailAddress)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Address)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PhoneNumber)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CustomerSince)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.BooksReturnedOnTime)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.MonthlyFeePayed)
-        </td>
-        <td>
-            @{ if (User.IsInRole("Admin"))
-                {
-                    @Html.ActionLink("Edit", "Edit", new { id = item.IDCustomer })
-                } }
 
 
+                @Html.ActionLink("Details", "Details", new { id = item.IDCustomer })
 
-            @Html.ActionLink("Details", "Details", new { id = item.IDCustomer })
 
-
-            @{ if (User.IsInRole("Admin"))
-                {
-                    @Html.ActionLink("Delete", "Delete", new { id = item.IDCustomer })
+                @{ if (User.IsInRole("Admin"))
+                    {
+                        @Html.ActionLink("Delete", "Delete", new { id = item.IDCustomer })
+                    }
                 }
-            }
-        </td>
-    </tr>
-}
+            </td>
+        </tr>
+    }
 
 </table>
