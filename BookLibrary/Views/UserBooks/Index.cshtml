@@ -7,22 +7,26 @@
 
 @*<h2>Index</h2>*@
 
-@*<p>
-    @Html.ActionLink("Create New", "Create")
-</p>*@
-    <p>
-        @using (Html.BeginForm("Index", "UserBooks", FormMethod.Get))
-        {
-            <b>Search By:</b> @Html.RadioButton("searchBy", "Name", true)<text>Name</text>
-            @Html.RadioButton("searchBy", "Author")<text>Author</text>
-            @Html.TextBox("search") <input type="submit" value="Search" />
-        }
-    </p>
-
-<table class="table"style="background-color:darkgrey;border:solid" align="center" >
-    @foreach(var item in Model)
+@{ if (User.IsInRole("Admin"))
     {
-        <div style="text-align:center;border:solid" >
+        <p>
+
+            @Html.ActionLink("Create New", "Create")
+        </p>
+    } }
+<p>
+    @using (Html.BeginForm("Index", "UserBooks", FormMethod.Get))
+    {
+        <b>Search By:</b> @Html.RadioButton("searchBy", "Name", true)<text>Name</text>
+        @Html.RadioButton("searchBy", "Author")<text>Author</text>
+        @Html.TextBox("search") <input type="submit" value="Search" />
+    }
+</p>
+
+<table class="table" style="background-color:darkgrey;border:solid" align="center">
+    @foreach (var item in Model)
+    {
+        <div style="text-align:center;border:solid">
             <div style="background-color:darkgrey;border:solid">
                 <img src=" @Html.DisplayFor(modelItem => item.imageUrl)" /><br />
                 <b>@Html.DisplayFor(modelItem => item.Name)</b><br />

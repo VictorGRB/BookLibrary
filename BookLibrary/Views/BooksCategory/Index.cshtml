@@ -7,55 +7,60 @@
 
 @*<h2>Index</h2>*@
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+@{ if (User.IsInRole("Admin"))
+    {
+        <p>
+
+            @Html.ActionLink("Create New", "Create")
+        </p>
+    } }
 <table class="table" style="background-color:darkgrey">
     <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.IDBooksCategory)
-        </th>
+        @*<th>
+                @Html.DisplayNameFor(model => model.IDBooksCategory)
+            </th>*@
         <th>
             @Html.DisplayNameFor(model => model.Genre)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.ChildAppropriate)
         </th>
-        
+
     </tr>
     @*<p>
-        @Html.DropDownList("bookCategory",ViewBag.myList as SelectList,"Select a Category")
-    </p>*@
+            @Html.DropDownList("bookCategory",ViewBag.myList as SelectList,"Select a Category")
+        </p>*@
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.IDBooksCategory)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Genre)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ChildAppropriate)
-        </td>
-        <td>
-            @{ if (User.IsInRole("Admin"))
-                {
-                    @Html.ActionLink("Edit", "Edit", new { id = item.IDBooksCategory })
-                } }
-
-
-
-            @Html.ActionLink("Details", "Details", new { id = item.IDBooksCategory })
+    @foreach (var item in Model)
+    {
+        <tr>
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.IDBooksCategory)
+                </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.Genre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ChildAppropriate)
+            </td>
+            <td>
+                @{ if (User.IsInRole("Admin"))
+                    {
+                        @Html.ActionLink("Edit", "Edit", new { id = item.IDBooksCategory })
+                    } }
 
 
-            @{ if (User.IsInRole("Admin"))
-                {
-                    @Html.ActionLink("Delete", "Delete", new { id = item.IDBooksCategory })
+
+                @Html.ActionLink("Details", "Details", new { id = item.IDBooksCategory })
+
+
+                @{ if (User.IsInRole("Admin"))
+                    {
+                        @Html.ActionLink("Delete", "Delete", new { id = item.IDBooksCategory })
+                    }
                 }
-            }
-        </td>
-    </tr>
-}
+            </td>
+        </tr>
+    }
 
 </table>

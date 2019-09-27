@@ -10,7 +10,7 @@
 </head>
 <body background="https://c4.wallpaperflare.com/wallpaper/526/8/1002/library-interior-interior-design-books-wallpaper-preview.jpg">
     <div class="navbar navbar-inverse navbar-fixed-top" style="background-image:url(https://cdn.pixabay.com/photo/2018/07/17/14/43/banner-3544296_1280.jpg)">
-        <div class="container" style="background-image:url(https://c.pxhere.com/images/a2/5e/dad5b734bc52576921142017ab67-1450721.jpg!d)">
+        <div class="container" style="background-image:url(https://wallpaperplay.com/walls/full/d/1/9/128919.jpg)">
             <div class="navbar-header" style="color:black">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse" style="color:black" >
                     <span class="icon-bar"></span>
@@ -21,34 +21,35 @@
             </div>
             <div class="navbar-collapse collapse" style="color:black">
                 <ul class="nav navbar-nav"  >
-                   
-                    @{
-                        if (User.IsInRole("Admin") || User.IsInRole("User"))
-                        {
-                            <li>@Html.ActionLink("View BooksCategories", "Index", "BooksCategory")</li>
+                       
+                        @{
+                            if (User.IsInRole("Admin") || User.IsInRole("User"))
+                            {
+                                <li>@Html.ActionLink("Book Categories", "Index", "BooksCategory")</li>
 
-                            <li>@Html.ActionLink("View LocationInLibrary", "Index", "LocationInLibrary")</li>
+                                <li>@Html.ActionLink("Locations In Library", "Index", "LocationInLibrary")</li>
+                            }
                         }
-                    }
-                    @{
-                        if (User.IsInRole("User"))
-                        {
-                            <li>@Html.ActionLink("Books", "Index", "UserBooks")</li>
+                        @{
+                            if (User.IsInRole("User"))
+                            {
+                                <li>@Html.ActionLink("Books", "Index", "UserBooks")</li>
+                            }
                         }
-                    }
 
-                    @{ if (User.IsInRole("Admin"))
-                        {
-                            <li>@Html.ActionLink("View Books", "Index", "Book")</li>
-                            <li>@Html.ActionLink("View BorrowForms", "Index", "BorrowForm")</li>
-                            <li>@Html.ActionLink("View Customers", "Index", "Customer")</li>
-                            <li>@Html.ActionLink("Create BooksCategory", "Create", "BooksCategory")</li>
-                            <li>@Html.ActionLink("Create BorrowForm", "Create", "BorrowForm")</li>
-                            <li>@Html.ActionLink("Create Customer", "Create", "Customer")</li>
-                            <li>@Html.ActionLink("Create LocationInLibrary", "Create", "LocationInLibrary")</li>
-                            <li>@Html.ActionLink("Create Book", "Create", "Book")</li>
-                        } }
+                        @{ if (User.IsInRole("Admin"))
+                            {
 
+                                <li>@Html.ActionLink("Books", "Index", "Book")</li>
+                                <li>@Html.ActionLink("BorrowForms", "Index", "BorrowForm")</li>
+                                <li>@Html.ActionLink("Customers", "Index", "Customer")</li>
+                                @*<li>@Html.ActionLink("Create BooksCategory", "Create", "BooksCategory")</li>
+                                <li>@Html.ActionLink("Create BorrowForm", "Create", "BorrowForm")</li>
+                                <li>@Html.ActionLink("Create Customer", "Create", "Customer")</li>
+                                <li>@Html.ActionLink("Create LocationInLibrary", "Create", "LocationInLibrary")</li>
+                                <li>@Html.ActionLink("Create Book", "Create", "Book")</li>*@
+                            } }
+                    
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
@@ -58,7 +59,7 @@
         @RenderBody()
         <hr />
         <footer>
-            <p style="background-color:darkgrey">&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            <p style="background-color:darkgrey">&copy; @DateTime.Now.Year - Sacred Heart</p>
         </footer>
     </div>
 

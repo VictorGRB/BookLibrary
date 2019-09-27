@@ -5,16 +5,20 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+@*<h2>Index</h2>*@
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+@{ if (User.IsInRole("Admin"))
+    {
+        <p>
+
+            @Html.ActionLink("Create New", "Create")
+        </p>
+    } }
 <table class="table" style="background-color:darkgrey">
     <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.IDLocationInLibrary)
-        </th>
+        @*<th>
+                @Html.DisplayNameFor(model => model.IDLocationInLibrary)
+            </th>*@
         <th>
             @Html.DisplayNameFor(model => model.Name)
         </th>
@@ -30,41 +34,42 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.IDLocationInLibrary)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Floor)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Sector)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Shelf)
-        </td>
-        <td>
-            @{ if (User.IsInRole("Admin"))
-                {
-                    @Html.ActionLink("Edit", "Edit", new { id = item.IDLocationInLibrary })
-                } }
+    @foreach (var item in Model)
+    {
+        <tr>
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.IDLocationInLibrary)
+                </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Floor)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Sector)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Shelf)
+            </td>
+            <td>
+                @{ if (User.IsInRole("Admin"))
+                    {
+                        @Html.ActionLink("Edit", "Edit", new { id = item.IDLocationInLibrary })
+                    } }
 
 
 
-            @Html.ActionLink("Details", "Details", new { id = item.IDLocationInLibrary })
+                @Html.ActionLink("Details", "Details", new { id = item.IDLocationInLibrary })
 
 
-            @{ if (User.IsInRole("Admin"))
-                {
-                    @Html.ActionLink("Delete", "Delete", new { id = item.IDLocationInLibrary })
+                @{ if (User.IsInRole("Admin"))
+                    {
+                        @Html.ActionLink("Delete", "Delete", new { id = item.IDLocationInLibrary })
+                    }
                 }
-            }
-        </td>
-    </tr>
-}
+            </td>
+        </tr>
+    }
 
 </table>

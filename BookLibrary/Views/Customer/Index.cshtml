@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+@*<h2>Index</h2>*@
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -20,9 +20,9 @@
 </p>
 <table class="table" style="background-color:darkgrey">
     <tr>
-        <th>
+        @*<th>
             @Html.DisplayNameFor(model => model.IDCustomer)
-        </th>
+        </th>*@
         <th>
             @Html.DisplayNameFor(model => model.Name)
         </th>
@@ -49,9 +49,9 @@
 
 @foreach (var item in Model) {
     <tr>
-        <td>
+        @*<td>
             @Html.DisplayFor(modelItem => item.IDCustomer)
-        </td>
+        </td>*@
         <td>
             @Html.DisplayFor(modelItem => item.Name)
         </td>

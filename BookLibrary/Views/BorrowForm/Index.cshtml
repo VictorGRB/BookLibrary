@@ -5,84 +5,87 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+@*<h2>Index</h2>*@
 @*<button type="button" onclick="location.href='@Url.Action("AddBook")'">ADD</button>*@
-        
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table" style="background-color:darkgrey">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.IDBorrowForm)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.IDBook)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.IDCustomer)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.BorrowedFrom)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.BorrowedUntil)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ReturnedOnTime)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ProperConditionsReturn)
-        </th>
-        <th></th>
-    </tr>
-    
-    @foreach (var item in Model)
+@{ if (User.IsInRole("Admin"))
     {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.IDBorrowForm)
-                
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IDBook)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IDCustomer)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.BorrowedFrom)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.BorrowedUntil)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ReturnedOnTime)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ProperConditionsReturn)
-            </td>
-            @*<td>
-                <button type="button" onclick="location.href='@Url.Action("AddBook",new { id = item.IDBook })'">ADD</button>
-            </td>*@
-            <td>
-                @{ if (User.IsInRole("Admin"))
-                    {
-                        @Html.ActionLink("Edit", "Edit", new { id = item.IDBorrowForm })
-                    } }
+        <p>
+
+            @Html.ActionLink("Create New", "Create")
+        </p>
+        } }
+        <table class="table" style="background-color:darkgrey">
+            <tr>
+                @*<th>
+                        @Html.DisplayNameFor(model => model.IDBorrowForm)
+                    </th>*@
+                <th>
+                    @Html.DisplayNameFor(model => model.IDBook)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.IDCustomer)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.BorrowedFrom)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.BorrowedUntil)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ReturnedOnTime)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ProperConditionsReturn)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    @*<td>
+                            @Html.DisplayFor(modelItem => item.IDBorrowForm)
+
+                        </td>*@
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IDBook)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IDCustomer)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.BorrowedFrom)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.BorrowedUntil)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ReturnedOnTime)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ProperConditionsReturn)
+                    </td>
+                    @*<td>
+                            <button type="button" onclick="location.href='@Url.Action("AddBook",new { id = item.IDBook })'">ADD</button>
+                        </td>*@
+                    <td>
+                        @{ if (User.IsInRole("Admin"))
+                            {
+                                @Html.ActionLink("Edit", "Edit", new { id = item.IDBorrowForm })
+                            } }
 
 
 
-                @Html.ActionLink("Details", "Details", new { id = item.IDBorrowForm })
+                        @Html.ActionLink("Details", "Details", new { id = item.IDBorrowForm })
 
 
-                @{ if (User.IsInRole("Admin"))
-                    {
-                        @Html.ActionLink("Delete", "Delete", new { id = item.IDBorrowForm })
-                    }
-                }
-            </td>
-        </tr>
-    }
+                        @{ if (User.IsInRole("Admin"))
+                            {
+                                @Html.ActionLink("Delete", "Delete", new { id = item.IDBorrowForm })
+                            }
+                        }
+                    </td>
+                </tr>
+            }
 
-</table>
+        </table>
