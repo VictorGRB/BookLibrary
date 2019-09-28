@@ -23,37 +23,35 @@ namespace BookLibrary.Repository
         //{
         //    BooksCategoryBooksViewModel booksCategoryBooksViewModel = new BooksCategoryBooksViewModel();
 
-        //}
-        public BookViewModel GetBookView(Guid bookID)
+    
+    public BookViewModel GetBookView(Guid bookID)
+    {
+        BookViewModel bookViewModel = new BookViewModel();
+        Book book = booksLibraryDataContext.Books.FirstOrDefault(x => x.IDBook == bookID);
+        if (book != null)
         {
-            BookViewModel bookViewModel = new BookViewModel();
-            Book book = booksLibraryDataContext.Books.FirstOrDefault(x => x.IDBook == bookID);
-            if (book != null)
+            bookViewModel.IDBook = book.IDBook;
+            bookViewModel.Name = book.Name;
+            bookViewModel.Author = book.Author;
+            bookViewModel.Publisher = book.Publisher;
+            bookViewModel.NumberOfCopies = book.NumberOfCopies;
+            bookViewModel.IDBooksCategory = book.IDBooksCategory;
+            bookViewModel.IDLocationInLibrary = book.IDLocationInLibrary;
+            bookViewModel.imageUrl = book.imageUrl;
+            IQueryable<BooksCategory> booksCategories = booksLibraryDataContext.BooksCategories.Where(x => x.IDBooksCategory == bookID);
+            foreach (BooksCategory dbBooksCategory in booksCategories)
             {
-                bookViewModel.IDBook = book.IDBook;
-                bookViewModel.Name = book.Name;
-                bookViewModel.Author = book.Author;
-                bookViewModel.Publisher = book.Publisher;
-                bookViewModel.NumberOfCopies = book.NumberOfCopies;
-                bookViewModel.IDBooksCategory = book.IDBooksCategory;
-                bookViewModel.IDLocationInLibrary = book.IDLocationInLibrary;
-                bookViewModel.imageUrl = book.imageUrl;
-                IQueryable<BooksCategory> booksCategories = booksLibraryDataContext.BooksCategories.Where(x => x.IDBooksCategory == bookID);
-                foreach (BooksCategory dbBooksCategory in booksCategories)
-                {
-                    Models.BooksCategoryModel booksCategoryModel = new Models.BooksCategoryModel();
-                    booksCategoryModel.Genre = dbBooksCategory.Genre;
+                Models.BooksCategoryModel booksCategoryModel = new Models.BooksCategoryModel();
+                booksCategoryModel.IDBooksCategory = dbBooksCategory.IDBooksCategory;
+                booksCategoryModel.Genre = dbBooksCategory.Genre;
 
-                    bookViewModel.BooksCategories.Add(booksCategoryModel);
-                }
+                bookViewModel.BooksCategories.Add(booksCategoryModel);
             }
-            return bookViewModel;
         }
+        return bookViewModel;
+    }
 
-
-
-
-            public List<BookModel>GetAllBooksByBooksCategory(Guid id)
+    public List<BookModel>GetAllBooksByBooksCategory(Guid id)
         {
             List<BookModel> booksList = new List<BookModel>();
             List<Book> book = booksLibraryDataContext.Books.Where(x => x.IDBooksCategory == id).ToList();

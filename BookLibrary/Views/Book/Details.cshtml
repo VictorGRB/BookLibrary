@@ -6,7 +6,7 @@
 }
 
 <h2>Details</h2>
-@*@foreach (var item in Model.BooksCategories)*@
+
 <div>
     @*<h4>BookViewModel</h4>*@
     <hr />
@@ -80,6 +80,9 @@
 @foreach (var item in Model.BooksCategories)
 {
     <div style="background-color:darkgrey;border:solid">
+        <p>
+            Genre: @Html.DisplayNameFor(modelItem => item.Genre)
+        </p>
         <p>
             Genre: @Html.DisplayFor(modelItem => item.Genre)
         </p>

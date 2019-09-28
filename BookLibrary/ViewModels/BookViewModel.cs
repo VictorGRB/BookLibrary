@@ -24,5 +24,6 @@ namespace BookLibrary.ViewModels
         public Guid IDLocationInLibrary { get; set; }
         public string imageUrl { get; set; }
         public List<BooksCategoryModel> BooksCategories = new List<BooksCategoryModel>();
+
     }
 }
