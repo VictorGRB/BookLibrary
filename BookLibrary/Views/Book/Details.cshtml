@@ -74,19 +74,22 @@
         <dd>
             @Html.DisplayFor(model => model.imageUrl)
         </dd>
-
+        
     </dl>
 </div>
 @foreach (var item in Model.BooksCategories)
 {
-    <div style="background-color:darkgrey;border:solid">
+    
         <p>
             Genre: @Html.DisplayNameFor(modelItem => item.Genre)
         </p>
         <p>
             Genre: @Html.DisplayFor(modelItem => item.Genre)
         </p>
-    </div>
+        <p>
+            Raaaaaa
+        </p>
+    
 }
 
 <p>
