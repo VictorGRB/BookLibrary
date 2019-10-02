@@ -20,19 +20,13 @@ namespace BookLibrary.Controllers
         public ActionResult Index()
         {
             List<Models.BooksCategoryModel> booksCategories = booksCategoryRepository.GetAllBookCategories();
-            ////return View("Index",booksCategories);
-
-            //var bookcats = booksCategories.ToList();
-            //SelectList myList = new SelectList(bookcats, "Genre", "ChildAppropriate");
-            //ViewBag.getCategories = myList;
             return View("Index", booksCategories);
         }
 
         // GET: BooksCategory/Details/5
         public ActionResult Details(Guid id)
         {
-            //Models.BooksCategoryModel booksCategoryModel = booksCategoryRepository.GetBookCategoryByID(id);
-            //return View("BooksCategoryDetails",booksCategoryModel);
+            
             BooksCategoryBooksViewModel viewModel = booksCategoryRepository.GetBooksCategoryBooks(id);
             return View(viewModel);
         }

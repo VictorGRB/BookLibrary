@@ -23,8 +23,6 @@ namespace BookLibrary.Controllers
         // GET: LocationInLibrary/Details/5
         public ActionResult Details(Guid id)
         {
-            //Models.LocationInLibraryModel locationInLibraryModel = locationInLibraryRepository.GetLocationInLibraryByID(id);
-            //return View("LocationInLibraryDetails",locationInLibraryModel);
             LocationInLibraryBooksViewModel viewModel = locationInLibraryRepository.GetLocationInLibraryBooks(id);
             return View(viewModel);
         }

@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-@*<h2>Index</h2>*@
+
 
 @{ if (User.IsInRole("Admin"))
     {
@@ -16,9 +16,7 @@
     } }
 <table class="table" style="background-color:darkgrey">
     <tr>
-        @*<th>
-                @Html.DisplayNameFor(model => model.IDBooksCategory)
-            </th>*@
+        
         <th>
             @Html.DisplayNameFor(model => model.Genre)
         </th>
@@ -27,16 +25,12 @@
         </th>
 
     </tr>
-    @*<p>
-            @Html.DropDownList("bookCategory",ViewBag.myList as SelectList,"Select a Category")
-        </p>*@
+   
 
     @foreach (var item in Model)
     {
         <tr>
-            @*<td>
-                    @Html.DisplayFor(modelItem => item.IDBooksCategory)
-                </td>*@
+            
             <td>
                 @Html.DisplayFor(modelItem => item.Genre)
             </td>

@@ -6,7 +6,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-@*<h2>Index</h2>*@
+
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -21,9 +21,7 @@
 </p>
 <table class="table" style="background-color:darkgrey">
     <tr>
-        @*<th>
-            @Html.DisplayNameFor(model => model.IDBook)
-        </th>*@
+        
         <th>
             @Html.DisplayNameFor(model => model.Name)
         </th>
@@ -36,12 +34,7 @@
         <th>
             @Html.DisplayNameFor(model => model.NumberOfCopies)
         </th>
-        @*<th>
-            @Html.DisplayNameFor(model => model.IDBooksCategory)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.IDLocationInLibrary)
-        </th>*@
+       
         <th>
             @Html.DisplayNameFor(model => model.imageUrl)
         </th>
@@ -57,9 +50,7 @@
     @foreach (var item in Model)
     {
         <tr>
-            @*<td>
-                @Html.DisplayFor(modelItem => item.IDBook)
-            </td>*@
+           
             <td>
                 @Html.DisplayFor(modelItem => item.Name)
             </td>
@@ -72,12 +63,7 @@
             <td>
                 @Html.DisplayFor(modelItem => item.NumberOfCopies)
             </td>
-            @*<td>
-                @Html.DisplayFor(modelItem => item.IDBooksCategory)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IDLocationInLibrary)
-            </td>*@
+           
             <td>
                 <img src=" @Html.DisplayFor(modelItem => item.imageUrl)" height="30" />
             </td>
