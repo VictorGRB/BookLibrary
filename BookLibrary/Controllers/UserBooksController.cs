@@ -11,10 +11,12 @@ namespace BookLibrary.Controllers
 
     public class UserBooksController : Controller
     {
+        private LocationInLibraryRepository locationInLibraryRepository = new LocationInLibraryRepository();
         private BookRepository bookRepository = new BookRepository();
         // GET: UserBooks
         public ActionResult Index(string searchBy,string search)
         {
+            
             List<BookModel> bookList = bookRepository.GetAllBooks();
             //return View("Index", bookList);
             if (searchBy == "Name")

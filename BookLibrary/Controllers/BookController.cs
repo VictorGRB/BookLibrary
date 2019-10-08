@@ -39,6 +39,9 @@ namespace BookLibrary.Controllers
         // GET: Book/Details/5
         public ActionResult Details(Guid id)
         {
+            var locations = locationInLibraryRepository.GetAllLocationsInLibrary();
+            SelectList lst = new SelectList(locations,"IDLocationInLibrary", "Name");
+            ViewData["location"] = lst;
             //Models.BookModel bookModel = bookRepository.GetBookByID(id);
             //return View("BookDetails", bookModel);
             BookViewModel viewModel = bookRepository.GetBookView(id);

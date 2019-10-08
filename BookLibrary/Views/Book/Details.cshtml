@@ -11,7 +11,7 @@
     
     <hr />
     <dl class="dl-horizontal">
-        
+
 
         <dt>
             @Html.DisplayNameFor(model => model.Name)
@@ -56,10 +56,13 @@
         <dt>
             @Html.DisplayNameFor(model => model.IDLocationInLibrary)
         </dt>
-
         <dd>
-            @Html.DisplayFor(model => model.IDLocationInLibrary)
+            @Html.DropDownListFor(model => model.IDLocationInLibrary, ViewData["location"] as IEnumerable<SelectListItem>)
         </dd>
+
+        @*<dd>
+            @Html.DisplayFor(model => model.IDLocationInLibrary)
+        </dd>*@
 
         <dt>
             @Html.DisplayNameFor(model => model.imageUrl)
@@ -68,7 +71,7 @@
         <dd>
             @Html.DisplayFor(model => model.imageUrl)
         </dd>
-        
+
     </dl>
 </div>
 @foreach (var item in Model.BooksCategories)

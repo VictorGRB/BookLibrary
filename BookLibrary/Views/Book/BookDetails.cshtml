@@ -64,7 +64,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Name)
+            @Html.DisplayFor(model => model.IDLocationInLibrary,ViewData["location"] as IEnumerable<SelectListItem>)
         </dd>
 
         <dt>
