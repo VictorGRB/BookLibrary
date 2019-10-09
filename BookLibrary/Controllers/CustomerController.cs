@@ -99,6 +99,7 @@ namespace BookLibrary.Controllers
         {
             try
             {
+
                 List<BorrowFormModel> borrowForms = borrowFormRepository.GetAllBorrowFormsByCustomerId(id);
                 foreach(BorrowFormModel borrowForm in borrowForms)
                 {
